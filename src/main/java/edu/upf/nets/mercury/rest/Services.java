@@ -1,5 +1,7 @@
 package edu.upf.nets.mercury.rest;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -11,6 +13,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import edu.upf.nets.mercury.pojo.data.TracerouteAS;
+import edu.upf.nets.mercury.pojo.data.TracerouteIp;
+import edu.upf.nets.mercury.pojo.data.TracerouteSettings;
 
 
 
@@ -117,31 +123,64 @@ public interface Services {
 			@FormParam("ips") String ips );
 	
 	
-//	@GET
-//	@Path("/data/{url}/{apiKey}")
-//	public Response data(@Context HttpServletRequest req,
-//			@PathParam("url") String url, @PathParam("apiKey") String apiKey);
-//	
-//	@GET
-//	@Path("/getFullDatasetsInfoJson/{apiKey}")
-//	@Produces("application/json")
-//	public Object getFullDatasetsInfoJson(@Context HttpServletRequest req, 
-//			@PathParam("apiKey")String apiKey);
-//	
-//	@GET
-//	@Path("/getDatasetsInfoJsonp/{apiKey}")
-//	@Produces("application/javascript; charset=UTF-8") 
-//	public JSONWithPadding getDatasetsInfoJsonp(@Context HttpServletRequest req,
-//			@QueryParam("callback") String callback, 
-//			@PathParam("apiKey") String apiKey);
-//	
-//	
-//	@POST
-//	@Path("/uploadGeoJson/{apiKey}/{datasetId}")
-//	@Consumes("application/json")
-//	public Response uploadGeoJson(@Context HttpServletRequest req,
-//			@PathParam("apiKey") String apiKey, 
-//			@PathParam("datasetId") String datasetId,
-//			Object obj);
+	//curl -X POST --data @tracerouteSettings.txt  --header "Content-Type:application/json" http://localhost:8080/mercury2/api/services/addTracerouteSettingsPOST
+	@POST
+	@Path("/addTracerouteSettingsPOST")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response addTracerouteSettingsPOST(@Context HttpServletRequest req, 
+			TracerouteSettings tracerouteSettings  );
+	
+	
+	
+	//curl -X POST --data @tracerouteIP.txt  --header "Content-Type:application/json" http://localhost:8080/mercury2/api/services/addTracerouteIpPOST
+	@POST
+	@Path("/addTracerouteIpPOST")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response addTracerouteIpPOST(@Context HttpServletRequest req, 
+			TracerouteIp tracerouteIp  );
+	
+	//curl -X POST --data "mongoQuery={ dst : """upf.edu""" }" http://localhost:8080/mercury2/api/services/getTracerouteIpsCustomQuery
+	@POST
+	@Path("/getTracerouteIpsCustomQuery")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces("application/json")
+	public Response getTracerouteIpsCustomQuery(@Context HttpServletRequest req, 
+			@FormParam("mongoQuery") String mongoQuery );
+	
+	
+	
+	//curl -X POST --data @tracerouteAS.txt  --header "Content-Type:application/json" http://localhost:8080/mercury2/api/services/addTracerouteASPOST
+	@POST
+	@Path("/addTracerouteASPOST")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response addTracerouteASPOST(@Context HttpServletRequest req, 
+			TracerouteAS tracerouteAS  );
+	
+	//curl -X POST --data @tracerouteASes.txt  --header "Content-Type:application/json" http://localhost:8080/mercury2/api/services/addTracerouteASesPOST
+	@POST
+	@Path("/addTracerouteASesPOST")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response addTracerouteASesPOST(@Context HttpServletRequest req, 
+			List<TracerouteAS> tracerouteASes  );
+	
+	//curl --data "mongoQuery={tracerouteASStats.completed : true,  tracerouteASStats.multipleASesDilemma : false,  tracerouteASStats.multipleASesDilemmaCorrected : false, tracerouteASStats.asHops : { $lte: 1 }, dst : """yimg.com""" 	}" http://localhost:8080/mercury2/api/services/getTracerouteASesCustomQuery
+	@POST
+	@Path("/getTracerouteASesCustomQuery")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces("application/json")
+	public Response getTracerouteASesCustomQuery(@Context HttpServletRequest req, 
+			@FormParam("mongoQuery") String mongoQuery );
+	
+	
+	@GET
+	@Path("/getTracerouteASesByDst/{dst}")
+	@Produces("application/json")
+	public Response getTracerouteASesByDst(@Context HttpServletRequest req, 
+			@PathParam("dst") String dst );
+
 	
 }

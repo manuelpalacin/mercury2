@@ -16,8 +16,12 @@ import com.maxmind.geoip.Location;
 
 import edu.upf.nets.mercury.dao.GeoIpDatabase;
 import edu.upf.nets.mercury.dao.LoadDatabaseDao;
+import edu.upf.nets.mercury.dao.TracerouteDao;
 import edu.upf.nets.mercury.pojo.ASRelationship;
 import edu.upf.nets.mercury.pojo.Ip2ASMapping;
+import edu.upf.nets.mercury.pojo.data.TracerouteAS;
+import edu.upf.nets.mercury.pojo.data.TracerouteIp;
+import edu.upf.nets.mercury.pojo.data.TracerouteSettings;
 import edu.upf.nets.mercury.util.IpAddressValidator;
 
 
@@ -32,6 +36,8 @@ public class ServicesImpl implements Services {
 	GeoIpDatabase geoIpDatabase;
 	@Autowired
 	IpAddressValidator ipAddressValidator;
+	@Autowired
+	TracerouteDao tracerouteDao;
 	
 	@Override
 	public Response myInfo(HttpServletRequest req) {
@@ -350,6 +356,91 @@ public class ServicesImpl implements Services {
 			}
 		} catch(Exception e){
 			return Response.status(200).entity( "Something went wrong. Please try again" ).build();
+		}
+	}
+
+	@Override
+	public Response getTracerouteIpsCustomQuery(HttpServletRequest req,
+			String mongoQuery) {
+		try {
+			List<TracerouteIp> resp = tracerouteDao.getTracerouteIpsCustomQuery(mongoQuery);
+			return Response.status(200).entity( resp ).build();
+
+		} catch(Exception e){
+			return Response.status(200).entity( "Something went wrong. Please try again. Your query:\n" + mongoQuery ).build();
+		}
+	}
+
+	@Override
+	public Response addTracerouteIpPOST(HttpServletRequest req,
+			TracerouteIp tracerouteIp) {
+		try {
+			tracerouteDao.addTracerouteIp(tracerouteIp);
+			return Response.status(200).entity( "OK! TracerouteIp uploaded" ).build();
+
+		} catch(Exception e){
+			return Response.status(200).entity( "Something went wrong. Please try again.").build();
+		}
+	}
+	
+	@Override
+	public Response getTracerouteASesCustomQuery(HttpServletRequest req,
+			String mongoQuery) {
+		try {
+			List<TracerouteAS> resp = tracerouteDao.getTracerouteASesCustomQuery(mongoQuery);
+			return Response.status(200).entity( resp ).build();
+
+		} catch(Exception e){
+			return Response.status(200).entity( "Something went wrong. Please try again. Your query:\n" + mongoQuery ).build();
+		}
+	}
+
+
+
+	@Override
+	public Response addTracerouteASPOST(HttpServletRequest req,
+			TracerouteAS tracerouteAS) {
+		try {
+			tracerouteDao.addTracerouteAS(tracerouteAS);
+			return Response.status(200).entity( "OK! TracerouteAS uploaded" ).build();
+
+		} catch(Exception e){
+			return Response.status(200).entity( "Something went wrong. Please try again.").build();
+		}
+	}
+
+	@Override
+	public Response addTracerouteASesPOST(HttpServletRequest req,
+			List<TracerouteAS> tracerouteASes) {
+		try {
+			tracerouteDao.addTracerouteASes(tracerouteASes);
+			return Response.status(200).entity( "OK! "+tracerouteASes.size()+" TracerouteASes uploaded" ).build();
+
+		} catch(Exception e){
+			return Response.status(200).entity( "Something went wrong. Please try again.").build();
+		}
+	}
+
+	@Override
+	public Response addTracerouteSettingsPOST(HttpServletRequest req,
+			TracerouteSettings tracerouteSettings) {
+		try {
+			String resp = tracerouteDao.addTracerouteSettings(tracerouteSettings);
+			return Response.status(200).entity( resp ).build();
+
+		} catch(Exception e){
+			return Response.status(200).entity( "Something went wrong. Please try again.").build();
+		}
+	}
+
+	@Override
+	public Response getTracerouteASesByDst(HttpServletRequest req, String dst) {
+		try {
+			List<TracerouteAS> resp = tracerouteDao.getTracerouteASesByDst(dst);
+			return Response.status(200).entity( resp ).build();
+
+		} catch(Exception e){
+			return Response.status(200).entity( "Something went wrong. Please try again.").build();
 		}
 	}
 

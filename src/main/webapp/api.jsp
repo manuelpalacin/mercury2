@@ -184,12 +184,113 @@
 					<h3 id="ip2asngeo-bulk-resp">Bulk Response</h3>
 					<p><code>HTTP - 200OK JSON Response</code></p>
 					<div class="highlight">
-						<pre><code>
-							[[{"as":766,"asName":"REDIRIS Entidad Publica Empresarial Red.es,ES","ip":"193.145.5.4","rangeHigh":3247702015,"ixpParticipantName":null,"numIps":262144,"rangeLow":3247439872,"ixpParticipant":0,"timeStamp":1398612049556,"prefix":"193.144.0.0/14","location":{"countryCode":"ES","countryName":"Spain","region":null,"city":null,"postalCode":null,"latitude":40.0,"longitude":-4.0,"dma_code":0,"area_code":0,"metro_code":0,"ip":"193.145.5.4"},"id":"535d205ee4b043743e72a38d","type":"AS"}],[{"as":15169,"asName":"GOOGLE - Google Inc.,US","ip":"8.8.8.8","rangeHigh":134744319,"ixpParticipantName":null,"numIps":256,"rangeLow":134744064,"ixpParticipant":0,"timeStamp":1398612048467,"prefix":"8.8.8.0/24","location":{"countryCode":"US","countryName":"United States","region":null,"city":null,"postalCode":null,"latitude":38.0,"longitude":-97.0,"dma_code":0,"area_code":0,"metro_code":0,"ip":"8.8.8.8"},"id":"535d205ee4b043743e6d7303","type":"AS"},{"as":3356,"asName":"LEVEL3 - Level 3 Communications, Inc.,US","ip":"8.8.8.8","rangeHigh":142606335,"ixpParticipantName":null,"numIps":8388608,"rangeLow":134217728,"ixpParticipant":0,"timeStamp":1398612048466,"prefix":"8.0.0.0/9","location":{"countryCode":"US","countryName":"United States","region":null,"city":null,"postalCode":null,"latitude":38.0,"longitude":-97.0,"dma_code":0,"area_code":0,"metro_code":0,"ip":"8.8.8.8"},"id":"535d205ee4b043743e6d72ad","type":"AS"},{"as":3356,"asName":"LEVEL3 - Level 3 Communications, Inc.,US","ip":"8.8.8.8","rangeHigh":150994943,"ixpParticipantName":null,"numIps":16777216,"rangeLow":134217728,"ixpParticipant":0,"timeStamp":1398612048466,"prefix":"8.0.0.0/8","location":{"countryCode":"US","countryName":"United States","region":null,"city":null,"postalCode":null,"latitude":38.0,"longitude":-97.0,"dma_code":0,"area_code":0,"metro_code":0,"ip":"8.8.8.8"},"id":"535d205ee4b043743e6d72ac","type":"AS"}]]
-						</code></pre>
+						<pre><code>[[{"as":766,"asName":"REDIRIS Entidad Publica Empresarial Red.es,ES","ip":"193.145.5.4","rangeHigh":3247702015,"ixpParticipantName":null,"numIps":262144,"rangeLow":3247439872,"ixpParticipant":0,"timeStamp":1398612049556,"prefix":"193.144.0.0/14","location":{"countryCode":"ES","countryName":"Spain","region":null,"city":null,"postalCode":null,"latitude":40.0,"longitude":-4.0,"dma_code":0,"area_code":0,"metro_code":0,"ip":"193.145.5.4"},"id":"535d205ee4b043743e72a38d","type":"AS"}],[{"as":15169,"asName":"GOOGLE - Google Inc.,US","ip":"8.8.8.8","rangeHigh":134744319,"ixpParticipantName":null,"numIps":256,"rangeLow":134744064,"ixpParticipant":0,"timeStamp":1398612048467,"prefix":"8.8.8.0/24","location":{"countryCode":"US","countryName":"United States","region":null,"city":null,"postalCode":null,"latitude":38.0,"longitude":-97.0,"dma_code":0,"area_code":0,"metro_code":0,"ip":"8.8.8.8"},"id":"535d205ee4b043743e6d7303","type":"AS"},{"as":3356,"asName":"LEVEL3 - Level 3 Communications, Inc.,US","ip":"8.8.8.8","rangeHigh":142606335,"ixpParticipantName":null,"numIps":8388608,"rangeLow":134217728,"ixpParticipant":0,"timeStamp":1398612048466,"prefix":"8.0.0.0/9","location":{"countryCode":"US","countryName":"United States","region":null,"city":null,"postalCode":null,"latitude":38.0,"longitude":-97.0,"dma_code":0,"area_code":0,"metro_code":0,"ip":"8.8.8.8"},"id":"535d205ee4b043743e6d72ad","type":"AS"},{"as":3356,"asName":"LEVEL3 - Level 3 Communications, Inc.,US","ip":"8.8.8.8","rangeHigh":150994943,"ixpParticipantName":null,"numIps":16777216,"rangeLow":134217728,"ixpParticipant":0,"timeStamp":1398612048466,"prefix":"8.0.0.0/8","location":{"countryCode":"US","countryName":"United States","region":null,"city":null,"postalCode":null,"latitude":38.0,"longitude":-97.0,"dma_code":0,"area_code":0,"metro_code":0,"ip":"8.8.8.8"},"id":"535d205ee4b043743e6d72ac","type":"AS"}]]</code></pre>
 					</div>
 				</div>	
+
+
+				<!-- Add TracerouteSettings-->
+				<div class="bs-docs-section">
+					<h1 id="add-traceroutesettings" class="page-header">Add TracerouteSettings</h1>
+				  	<h3 id="add-traceroutesettings-desc">Description</h3>
+					<p>Upload TracerouteSettings structure. You can download an example <a href="files/tracerouteSettings.txt">here</a>. This method returns NULL if the TracerouteSettings is not in the database and saves it. Otherwise returns the ID of the existing TracerouteSetting pre-saved.</p>
+					<h3 id="add-traceroutesettings-req">Request</h3>
+					<p><code>HTTP POST JSON Request</code></p>
+					<pre><code>curl -X POST --data @tracerouteSettings.txt  --header "Content-Type:application/json"  http://mercury.upf.edu/mercury/api/services/addTracerouteSettingsPOST</code></pre>
+					<h3 id="add-traceroutesettings-resp">Response</h3>
+					<p><code>HTTP - 200OK plain-text Response</code></p>
+					<div class="highlight">
+						<pre><code>550e8400-e29b-41d4-a716-446655440000</code></pre>
+					</div>
+				</div>
 								
+				<!-- Add TracerouteIp-->
+				<div class="bs-docs-section">
+					<h1 id="add-tracerouteip" class="page-header">Add TracerouteIp</h1>
+				  	<h3 id="add-tracerouteip-desc">Description</h3>
+					<p>Upload TracerouteIp structure.</p>
+					<h3 id="add-tracerouteip-req">Request</h3>
+					<p><code>HTTP POST JSON Request</code></p>
+					<pre><code>curl -X POST --data @tracerouteIP.txt  --header "Content-Type:application/json"  http://mercury.upf.edu/mercury/api/services/addTracerouteIpPOST</code></pre>
+					<h3 id="add-tracerouteip-resp">Response</h3>
+					<p><code>HTTP - 200OK plain-text Response</code></p>
+					<div class="highlight">
+						<pre><code>"OK! TracerouteIp uploaded"</code></pre>
+					</div>
+				</div>
+
+				<!-- Get TracerouteIps-->
+				<div class="bs-docs-section">
+					<h1 id="get-tracerouteip" class="page-header">Get TracerouteIps</h1>
+				  	<h3 id="get-tracerouteip-desc">Description</h3>
+					<p>Get TracerouteIps using custom Query.</p>
+					<h3 id="get-tracerouteip-req">Request</h3>
+					<p><code>HTTP POST JSON Request</code></p>
+					<pre><code>curl -X POST --data "mongoQuery={ dst : """upf.edu""" }" http://mercury.upf.edu/mercury/api/services/getTracerouteIpsCustomQuery</code></pre>
+					<h3 id="get-tracerouteip-resp">Response</h3>
+					<p><code>HTTP - 200OK JSON Response</code></p>
+					<div class="highlight">
+						<pre><code>...[{},{}]</code></pre>
+					</div>
+				</div>
+				
+
+				<!-- Add TracerouteAS-->
+				<div class="bs-docs-section">
+					<h1 id="add-tracerouteas" class="page-header">Add TracerouteAS</h1>
+				  	<h3 id="add-tracerouteas-desc">Description</h3>
+					<p>Upload TracerouteAS structure. Here you can download an <a href="files/tracerouteAS.txt">individual upload</a> and a <a href="files/tracerouteASes.txt">bulk upload</a>. </p>
+					<h3 id="add-tracerouteas-req">Request</h3>
+					<p><code>HTTP POST JSON Request</code></p>
+					<pre><code>curl -X POST --data @tracerouteAS.txt  --header "Content-Type:application/json"  http://mercury.upf.edu/mercury/api/services/addTracerouteASPOST</code></pre>
+					<h3 id="add-tracerouteas-resp">Response</h3>
+					<p><code>HTTP - 200OK plain-text Response</code></p>
+					<div class="highlight">
+						<pre><code>"OK! TracerouteIp uploaded"</code></pre>
+					</div>
+					<h3 id="add-tracerouteas-bulk-req">Bulk Request</h3>
+					<p><code>HTTP POST JSON Request</code></p>
+					<pre><code>curl -X POST --data @tracerouteASes.txt  --header "Content-Type:application/json"  http://mercury.upf.edu/mercury/api/services/addTracerouteASesPOST</code></pre>
+					<h3 id="add-tracerouteas-bulk-resp">Bulk Response</h3>
+					<p><code>HTTP - 200OK plain-text Response</code></p>
+					<div class="highlight">
+						<pre><code>"OK! 2 TracerouteIp uploaded"</code></pre>
+					</div>
+				</div>
+
+				<!-- Get TracerouteASes-->
+				<div class="bs-docs-section">
+					<h1 id="get-tracerouteas" class="page-header">Get TracerouteASes</h1>
+				  	<h3 id="get-tracerouteas-desc">Description</h3>
+					<p>Get TracerouteASes using custom Query.</p>
+					<h3 id="get-tracerouteas-req">Request</h3>
+					<p><code>HTTP POST JSON Request</code></p>
+					<pre><code>curl -X POST --data "mongoQuery={tracerouteASStats.completed : true, tracerouteASStats.asHops : { $lte: 1 }, dst : """yimg.com""" 	}" http://mercury.upf.edu/mercury/api/services/getTracerouteASesCustomQuery</code></pre>
+					<h3 id="get-tracerouteas-resp">Response</h3>
+					<p><code>HTTP - 200OK JSON Response</code></p>
+					<div class="highlight">
+						<pre><code>[{"timeStamp":1399040505215,"srcIp":"192.168.1.2","srcPublicIp":"86.80.5.3","dstIp":"78.5.6.1","dst":"yimg.com","srcAS":3352,"srcASName":"Telefonica de Espana","srcCity":"Barcelona","srcCountry":"Spain","dstAS":10310,"dstASName":"Yahoo-1","dstCity":"SunnyVale","dstCountry":"United States","tracerouteIpAttemptIds":[],"tracerouteASHops":[],"tracerouteASRelationships":[],"tracerouteASStats":{"completed":true,"tracerouteASRelationships":[],"asHops":1,"c2pRels":2,"p2pRels":0,"p2cRels":0,"s2sRels":0,"ixpRels":0,"nfRels":0,"multipleASesDilemma":false,"multipleASesDilemmaCorrected":false}},{"timeStamp":1399040522756,"srcIp":"192.168.1.2","srcPublicIp":"87.80.5.3","dstIp":"78.5.6.1","dst":"yimg.com","srcAS":3352,"srcASName":"Telefonica de Espana","srcCity":"Barcelona","srcCountry":"Spain","dstAS":10310,"dstASName":"Yahoo-1","dstCity":"SunnyVale","dstCountry":"United States","tracerouteIpAttemptIds":[],"tracerouteASHops":[],"tracerouteASRelationships":[],"tracerouteASStats":{"completed":true,"tracerouteASRelationships":[],"asHops":1,"c2pRels":2,"p2pRels":0,"p2cRels":0,"s2sRels":0,"ixpRels":0,"nfRels":0,"multipleASesDilemma":false,"multipleASesDilemmaCorrected":false}}]</code></pre>
+					</div>
+				</div>
+
+				<!-- Get TracerouteASes by Destination-->
+				<div class="bs-docs-section">
+					<h1 id="get-tracerouteas-dst" class="page-header">Get TracerouteASes by destination domain</h1>
+				  	<h3 id="get-tracerouteas-dst-desc">Description</h3>
+					<p>Get TracerouteASes filtering by destination domain.</p>
+					<h3 id="get-tracerouteas-dst-req">Request</h3>
+					<p><code>HTTP GET Request</code></p>
+					<pre><code>http://mercury.upf.edu/mercury/api/services/getTracerouteASesByDst/{dst}</code></pre>
+					<h4>Parameters</h4>
+					<ul>
+						<li><code>dst</code> is the destination domain (e.g. yimg.com)</li>
+					</ul>
+					<h3 id="get-tracerouteas-dst-resp">Response</h3>
+					<p><code>HTTP - 200OK JSON Response</code></p>
+					<div class="highlight">
+						<pre><code>[{"timeStamp":1399040505215,"srcIp":"192.168.1.2","srcPublicIp":"86.80.5.3","dstIp":"78.5.6.1","dst":"yimg.com","srcAS":3352,"srcASName":"Telefonica de Espana","srcCity":"Barcelona","srcCountry":"Spain","dstAS":10310,"dstASName":"Yahoo-1","dstCity":"SunnyVale","dstCountry":"United States","tracerouteIpAttemptIds":[],"tracerouteASHops":[],"tracerouteASRelationships":[],"tracerouteASStats":{"completed":true,"tracerouteASRelationships":[],"asHops":1,"c2pRels":2,"p2pRels":0,"p2cRels":0,"s2sRels":0,"ixpRels":0,"nfRels":0,"multipleASesDilemma":false,"multipleASesDilemmaCorrected":false}},{"timeStamp":1399040522756,"srcIp":"192.168.1.2","srcPublicIp":"87.80.5.3","dstIp":"78.5.6.1","dst":"yimg.com","srcAS":3352,"srcASName":"Telefonica de Espana","srcCity":"Barcelona","srcCountry":"Spain","dstAS":10310,"dstASName":"Yahoo-1","dstCity":"SunnyVale","dstCountry":"United States","tracerouteIpAttemptIds":[],"tracerouteASHops":[],"tracerouteASRelationships":[],"tracerouteASStats":{"completed":true,"tracerouteASRelationships":[],"asHops":1,"c2pRels":2,"p2pRels":0,"p2cRels":0,"s2sRels":0,"ixpRels":0,"nfRels":0,"multipleASesDilemma":false,"multipleASesDilemmaCorrected":false}}]</code></pre>
+					</div>
+				</div>
 				
 			</div><!-- End col main -->
 			
@@ -203,6 +304,13 @@
 						<li><a href="#ip2asn">Get IP to ASN Mapping</a></li>
 						<li><a href="#ip2geo">Get IP to Geo Mapping</a></li>
 						<li><a href="#ip2asngeo">Get IP to AS and Geo Mapping</a></li>
+						
+						<li><a href="#add-traceroutesettings">Add TracerouteSettings</a></li>
+						<li><a href="#add-tracerouteip">Add TracerouteIp</a></li>
+						<li><a href="#get-tracerouteip">Get TracerouteIps</a></li>
+						<li><a href="#add-tracerouteas">Add TracerouteAS</a></li>
+						<li><a href="#get-tracerouteas">Get TracerouteASes</a></li>
+						<li><a href="#get-tracerouteas-dst">Get TracerouteASes by destination</a></li>
 					</ul>
 		            <a class="back-to-top" href="#top">
 		              Back to top

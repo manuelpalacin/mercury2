@@ -1,0 +1,12 @@
+{
+	"id" : "550e8400-e29b-41d4-a716-446655440000",
+	"attemptsPerFlow" : 5,
+	"flowCount" : 5,
+	"minHops" : 0,
+	"maxHops" : 32,
+	"attemptDelay" : 1000,
+	"hopTimeout" : 500,
+	"minPort" : 35500,
+	"maxPort" : 36500,
+	"dataLength" : 20
+}

@@ -2,26 +2,15 @@ package edu.upf.nets.mercury.pojo.data;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-
 public class TracerouteIpHop {
 
 	public enum State {
-		REQSENT, RESPRECV
+		REQ_SENT, RESP_RECV
 	}
 	public enum Type {
-		TIMEEXCEEDED, DESTINATIONUNREACHABLE
+		TIME_EXCEEDED, DESTINATION_UNREACHABLE
 	}
-	
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
-	private String id;
+
 	private TracerouteIpHop.State state;
 	private TracerouteIpHop.Type type;
 	private String ipAddr;
@@ -29,12 +18,7 @@ public class TracerouteIpHop {
 	private Date reqTimeStamp;
 	private Date respTimeStamp;
 
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public TracerouteIpHop.State getState() {
 		return state;
 	}

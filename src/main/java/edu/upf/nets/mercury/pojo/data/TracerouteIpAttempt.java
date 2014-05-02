@@ -3,31 +3,20 @@ package edu.upf.nets.mercury.pojo.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-public class TracerouteAttemp {
+public class TracerouteIpAttempt {
 	
 	public enum State {
 		COMPLETED, UNREACHABLE
 	}
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
-	private String id;
+
 	private List<TracerouteIpHop> tracerouteIpHops;
-	private TracerouteAttemp.State state;
+	private TracerouteIpAttempt.State state;
+	private int maxTTL;
+	private String tracerouteIpAttemptId;
 	
-	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public List<TracerouteIpHop> getTracerouteIpHops() {
 		if(tracerouteIpHops == null){
 			tracerouteIpHops = new ArrayList<TracerouteIpHop>();
@@ -40,11 +29,23 @@ public class TracerouteAttemp {
 	public void addTracerouteIpHop(TracerouteIpHop tracerouteIpHop) {
 		getTracerouteIpHops().add(tracerouteIpHop);
 	}
-	public TracerouteAttemp.State getState() {
+	public TracerouteIpAttempt.State getState() {
 		return state;
 	}
-	public void setState(TracerouteAttemp.State state) {
+	public void setState(TracerouteIpAttempt.State state) {
 		this.state = state;
+	}
+	public int getMaxTTL() {
+		return maxTTL;
+	}
+	public void setMaxTTL(int maxTTL) {
+		this.maxTTL = maxTTL;
+	}
+	public String getTracerouteIpAttemptId() {
+		return tracerouteIpAttemptId;
+	}
+	public void setTracerouteIpAttemptId(String tracerouteIpAttemptId) {
+		this.tracerouteIpAttemptId = tracerouteIpAttemptId;
 	}
 	
 	
