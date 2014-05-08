@@ -1,8 +1,5 @@
 package edu.upf.nets.mercury.pojo.data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class TracerouteASStats {
 	
@@ -15,7 +12,6 @@ public class TracerouteASStats {
 	private int nfRels;
 	private boolean completed;
 	private int flags;
-	private List<TracerouteASRelationship> tracerouteASRelationships;
 	
 	public TracerouteASStats(){}
 	
@@ -76,30 +72,15 @@ public class TracerouteASStats {
 	public void setNfRels(int nfRels) {
 		this.nfRels = nfRels;
 	}
-	public List<TracerouteASRelationship> getTracerouteASRelationships() {
-		if(this.tracerouteASRelationships == null){
-			this.tracerouteASRelationships = new ArrayList<TracerouteASRelationship>();
-		}
-		return tracerouteASRelationships;
-	}
-	public void setTracerouteASRelationships(
-			List<TracerouteASRelationship> tracerouteASRelationships) {
-		this.tracerouteASRelationships = tracerouteASRelationships;
-	}
-	public void addTracerouteASRelationship(TracerouteASRelationship tracerouteASRelationship){
-		getTracerouteASRelationships().add(tracerouteASRelationship);
-	}
 	public boolean isCompleted() {
 		return completed;
 	}
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
 	}
-
 	public int getFlags() {
 		return flags;
 	}
-
 	public void setFlags(int flags) {
 		this.flags = flags;
 	}

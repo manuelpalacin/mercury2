@@ -52,7 +52,7 @@ public class TracerouteDaoImpl implements TracerouteDao {
 						TracerouteSettings.class);
 		if(aux == null){
 			mongoTemplate.save(tracerouteSettings);
-			return null;
+			return tracerouteSettings.getId();
 		} else {
 			return aux.getId();
 		}

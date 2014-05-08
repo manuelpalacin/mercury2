@@ -193,7 +193,7 @@
 				<div class="bs-docs-section">
 					<h1 id="add-traceroutesettings" class="page-header">Add TracerouteSettings</h1>
 				  	<h3 id="add-traceroutesettings-desc">Description</h3>
-					<p>Upload TracerouteSettings structure. You can download an example <a href="files/tracerouteSettings.txt">here</a>. This method returns NULL if the TracerouteSettings is not in the database and saves it. Otherwise returns the ID of the existing TracerouteSetting pre-saved.</p>
+					<p>Upload TracerouteSettings structure. You can download an example <a href="files/tracerouteSettings.txt">here</a>. This method returns the ID of the existing TracerouteSetting pre-saved or if a similar profile does not exists, it returns the ID that you have generated (UUID) .</p>
 					<h3 id="add-traceroutesettings-req">Request</h3>
 					<p><code>HTTP POST JSON Request</code></p>
 					<pre><code>curl -X POST --data @tracerouteSettings.txt  --header "Content-Type:application/json"  http://mercury.upf.edu/mercury/api/services/addTracerouteSettingsPOST</code></pre>
