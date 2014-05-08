@@ -436,7 +436,8 @@ public class ServicesImpl implements Services {
 	@Override
 	public Response getTracerouteASesByDst(HttpServletRequest req, String dst) {
 		try {
-			List<TracerouteAS> resp = tracerouteDao.getTracerouteASesByDst(dst);
+			int flags = 1;
+			List<TracerouteAS> resp = tracerouteDao.getTracerouteASesByDst(dst, flags);
 			return Response.status(200).entity( resp ).build();
 
 		} catch(Exception e){

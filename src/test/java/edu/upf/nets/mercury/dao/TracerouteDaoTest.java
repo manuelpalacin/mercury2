@@ -38,11 +38,11 @@ public class TracerouteDaoTest {
 	@Test
 	public void addTracerouteAS() {
 		TracerouteASStats TracerouteASStats1 = 
-				new TracerouteASStats(2, 2, 1, 0, 0, 0, 0, true, false, false);
+				new TracerouteASStats(2, 2, 1, 0, 0, 0, 0, true, 1);
 		TracerouteASStats TracerouteASStats2 = 
-				new TracerouteASStats(1, 2, 0, 0, 0, 0, 0, true, false, false);
+				new TracerouteASStats(1, 2, 0, 0, 0, 0, 0, true, 1);
 		TracerouteASStats TracerouteASStats3 = 
-				new TracerouteASStats(3, 1, 0, 0, 0, 0, 0, true, false, false);
+				new TracerouteASStats(3, 1, 0, 0, 0, 0, 0, true, 1);
 
 		TracerouteAS tracerouteAS1 = 
 				new TracerouteAS(3352, "Telefonica de España", "192.168.1.2", "81.80.5.3", 
@@ -81,7 +81,8 @@ public class TracerouteDaoTest {
 	@Test
 	public void getTracerouteASesBySrcAS() {
 		int srcAS = 3352;
-		for (TracerouteAS tracerouteAS : tracerouteDao.getTracerouteASesBySrcAS(srcAS)) {
+		int flags = 1;
+		for (TracerouteAS tracerouteAS : tracerouteDao.getTracerouteASesBySrcAS(srcAS, flags)) {
 			log.info(" getTracerouteASesBySrcAS --- TRACEROTE AS SRC: "+ tracerouteAS.getSrcAS());
 		} 
 	}
@@ -90,7 +91,8 @@ public class TracerouteDaoTest {
 	@Test
 	public void getTracerouteASesByDst() {
 		String dst = "yimg.com";
-		for (TracerouteAS tracerouteAS : tracerouteDao.getTracerouteASesByDst(dst)) {
+		int flags = 1;
+		for (TracerouteAS tracerouteAS : tracerouteDao.getTracerouteASesByDst(dst, flags)) {
 			log.info(" getTracerouteASesByDst --- TRACEROTE AS SRC: "+ tracerouteAS.getSrcAS());
 		} 
 	}
@@ -100,7 +102,8 @@ public class TracerouteDaoTest {
 	public void getTracerouteASesWithLteHopsByDst() {
 		int asHops = 2;
 		String dst = "yimg.com";
-		for (TracerouteAS tracerouteAS : tracerouteDao.getTracerouteASesWithLteHopsByDst(asHops, dst)) {
+		int flags = 1;
+		for (TracerouteAS tracerouteAS : tracerouteDao.getTracerouteASesWithLteHopsByDst(asHops, dst, flags)) {
 			log.info(" getTracerouteASesWithLteHopsByDst --- TRACEROUTE STATS HOPS: "+ tracerouteAS.getTracerouteASStats().getAsHops() );
 		} 
 	}
@@ -111,8 +114,7 @@ public class TracerouteDaoTest {
 
 		String mongoQuery = "{ "
 				+ " tracerouteASStats.completed : true, "
-				+ " tracerouteASStats.multipleASesDilemma : false, "
-				+ " tracerouteASStats.multipleASesDilemmaCorrected : false,"
+				+ " tracerouteASStats.flags : 1, "
 				+ " tracerouteASStats.asHops : { $lte: 1 },"
 				+ " dst : \"yimg.com\" "
 				+ "	} ";

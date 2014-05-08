@@ -14,15 +14,14 @@ public class TracerouteASStats {
 	private int ixpRels;
 	private int nfRels;
 	private boolean completed;
-	private boolean multipleASesDilemma;
-	private boolean multipleASesDilemmaCorrected;
+	private int flags;
 	private List<TracerouteASRelationship> tracerouteASRelationships;
 	
 	public TracerouteASStats(){}
 	
 	public TracerouteASStats(int asHops, int c2pRels, int p2pRels, int p2cRels,
 			int s2sRels, int ixpRels, int nfRels, boolean completed,
-			boolean multipleASesDilemma, boolean multipleASesDilemmaCorrected) {
+			int flags) {
 		super();
 		this.asHops = asHops;
 		this.c2pRels = c2pRels;
@@ -32,8 +31,7 @@ public class TracerouteASStats {
 		this.ixpRels = ixpRels;
 		this.nfRels = nfRels;
 		this.completed = completed;
-		this.multipleASesDilemma = multipleASesDilemma;
-		this.multipleASesDilemmaCorrected = multipleASesDilemmaCorrected;
+		this.flags = flags;
 	}
 	
 	public int getAsHops() {
@@ -97,18 +95,15 @@ public class TracerouteASStats {
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
 	}
-	public boolean isMultipleASesDilemma() {
-		return multipleASesDilemma;
+
+	public int getFlags() {
+		return flags;
 	}
-	public void setMultipleASesDilemma(boolean multipleASesDilemma) {
-		this.multipleASesDilemma = multipleASesDilemma;
+
+	public void setFlags(int flags) {
+		this.flags = flags;
 	}
-	public boolean isMultipleASesDilemmaCorrected() {
-		return multipleASesDilemmaCorrected;
-	}
-	public void setMultipleASesDilemmaCorrected(boolean multipleASesDilemmaCorrected) {
-		this.multipleASesDilemmaCorrected = multipleASesDilemmaCorrected;
-	}
+
 	
 	
 
