@@ -9,8 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import edu.upf.nets.mercury.util.CustomDateSerializer;
 
 @Document(collection = "tracerouteas")
 public class TracerouteAS {
@@ -139,6 +142,7 @@ public class TracerouteAS {
 	public void setDstCountry(String dstCountry) {
 		this.dstCountry = dstCountry;
 	}
+	@JsonSerialize(using = CustomDateSerializer.class)
 	public Date getTimeStamp() {
 		return timeStamp;
 	}

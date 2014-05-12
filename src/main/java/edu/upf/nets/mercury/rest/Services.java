@@ -26,6 +26,7 @@ public interface Services {
 	
 	@GET
 	@Path("/myInfo")
+	@Produces("application/json")
 	public Response myInfo(@Context HttpServletRequest req);
 	
 	

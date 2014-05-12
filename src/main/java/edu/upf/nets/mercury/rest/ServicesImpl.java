@@ -17,9 +17,10 @@ import com.maxmind.geoip.Location;
 import edu.upf.nets.mercury.dao.GeoIpDatabase;
 import edu.upf.nets.mercury.dao.LoadDatabaseDao;
 import edu.upf.nets.mercury.dao.TracerouteDao;
-import edu.upf.nets.mercury.pojo.ASRelationship;
 import edu.upf.nets.mercury.pojo.Ip2ASMapping;
+import edu.upf.nets.mercury.pojo.MyInfo;
 import edu.upf.nets.mercury.pojo.data.TracerouteAS;
+import edu.upf.nets.mercury.pojo.data.TracerouteASRelationship;
 import edu.upf.nets.mercury.pojo.data.TracerouteIp;
 import edu.upf.nets.mercury.pojo.data.TracerouteSettings;
 import edu.upf.nets.mercury.util.IpAddressValidator;
@@ -54,9 +55,9 @@ public class ServicesImpl implements Services {
 				asName = loadDatabaseDao.getIp2AsnMappingByIp(ipNum).getAsName();
 			} catch(Exception e){}
 			
-			String result = "{ \"ip\":\""+ip+"\", \"as\":"+as+", \"asName\":\""+asName+"\", \"timeStamp\":\""+new Date()+"\" }";
+			MyInfo myInfo = new MyInfo(ip, as, asName);
 	
-			return Response.status(200).entity( result ).build();	
+			return Response.status(200).entity( myInfo ).build();	
 		} catch (Exception e){
 			return Response.status(200).entity( "Something went wrong Please try again" ).build();
 		}
@@ -68,13 +69,13 @@ public class ServicesImpl implements Services {
 		try {
 			Integer relationship = loadDatabaseDao.getASRelationship(as0, as1);
 			
-			ASRelationship asRelationship = new ASRelationship();
+			TracerouteASRelationship asRelationship = new TracerouteASRelationship();
 			asRelationship.setAs0(as0);
 			asRelationship.setAs1(as1);
 			if(relationship == null) {
-				asRelationship.setRelationship(10);
+				asRelationship.addRelationship(10);
 			} else {
-				asRelationship.setRelationship(relationship);
+				asRelationship.addRelationship(relationship);
 			}
 			return Response.status(200).entity( asRelationship ).build();
 		} catch(Exception e){
@@ -85,7 +86,7 @@ public class ServicesImpl implements Services {
 	@Override
 	public Response getASRelationships(HttpServletRequest req, String pairs) {
 		try {
-			List<ASRelationship> resp = new ArrayList<ASRelationship>();
+			List<TracerouteASRelationship> resp = new ArrayList<TracerouteASRelationship>();
 			String[] pairsList = pairs.split(",");
 			if(pairsList.length <= 1000){
 				for (String pair : pairsList) {
@@ -96,13 +97,13 @@ public class ServicesImpl implements Services {
 						
 						Integer relationship = loadDatabaseDao.getASRelationship(as0, as1);
 						
-						ASRelationship asRelationship = new ASRelationship();
+						TracerouteASRelationship asRelationship = new TracerouteASRelationship();
 						asRelationship.setAs0(as0);
 						asRelationship.setAs1(as1);
 						if(relationship == null) {
-							asRelationship.setRelationship(10);
+							asRelationship.addRelationship(10);
 						} else {
-							asRelationship.setRelationship(relationship);
+							asRelationship.addRelationship(relationship);
 						}
 						
 						resp.add(asRelationship);
@@ -120,7 +121,7 @@ public class ServicesImpl implements Services {
 	@Override
 	public Response getASRelationshipsPOST(HttpServletRequest req, String pairs) {
 		try {
-			List<ASRelationship> resp = new ArrayList<ASRelationship>();
+			List<TracerouteASRelationship> resp = new ArrayList<TracerouteASRelationship>();
 			String[] pairsList = pairs.split(",");
 			if(pairsList.length <= 1000){
 				for (String pair : pairsList) {
@@ -131,13 +132,13 @@ public class ServicesImpl implements Services {
 						
 						Integer relationship = loadDatabaseDao.getASRelationship(as0, as1);
 						
-						ASRelationship asRelationship = new ASRelationship();
+						TracerouteASRelationship asRelationship = new TracerouteASRelationship();
 						asRelationship.setAs0(as0);
 						asRelationship.setAs1(as1);
 						if(relationship == null) {
-							asRelationship.setRelationship(10);
+							asRelationship.addRelationship(10);
 						} else {
-							asRelationship.setRelationship(relationship);
+							asRelationship.addRelationship(relationship);
 						}
 						
 						resp.add(asRelationship);

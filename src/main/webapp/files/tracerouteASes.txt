@@ -1,4 +1,122 @@
 [
-{"timeStamp":1399040505215,"srcIp":"192.168.1.2","srcPublicIp":"86.80.5.3","dstIp":"78.5.6.1","dst":"yimg.com","srcAS":3352,"srcASName":"Telefonica de Espana","srcCity":"Barcelona","srcCountry":"Spain","dstAS":10310,"dstASName":"Yahoo-1","dstCity":"SunnyVale","dstCountry":"United States","tracerouteIpAttemptIds":[],"tracerouteASHops":[],"tracerouteASRelationships":[],"tracerouteASStats":{"completed":true,"tracerouteASRelationships":[],"asHops":1,"c2pRels":2,"p2pRels":0,"p2cRels":0,"s2sRels":0,"ixpRels":0,"nfRels":0,"flags":1}},
-{"timeStamp":1399040522756,"srcIp":"192.168.1.2","srcPublicIp":"87.80.5.3","dstIp":"78.5.6.1","dst":"yimg.com","srcAS":3352,"srcASName":"Telefonica de Espana","srcCity":"Barcelona","srcCountry":"Spain","dstAS":10310,"dstASName":"Yahoo-1","dstCity":"SunnyVale","dstCountry":"United States","tracerouteIpAttemptIds":[],"tracerouteASHops":[],"tracerouteASRelationships":[],"tracerouteASStats":{"completed":true,"tracerouteASRelationships":[],"asHops":1,"c2pRels":2,"p2pRels":0,"p2cRels":0,"s2sRels":0,"ixpRels":0,"nfRels":0,"flags":1}}
+{
+"timeStamp":1399040522756,"srcIp":"192.168.1.2","srcPublicIp":"82.80.5.3","dstIp":"78.5.6.1","dst":"yimg.com","srcAS":3352,"srcASName":"Telefonica de Espana","srcCity":"Barcelona","srcCountry":"Spain","dstAS":10310,"dstASName":"Yahoo-1","dstCity":"SunnyVale","dstCountry":"United States",
+	"tracerouteIpAttemptIds":["4c045640-d6c7-11e3-9c1a-0800200c9a66","621c8c50-d6c7-11e3-9c1a-0800200c9a66","2912ed60-d6c7-11e3-9c1a-0800200c9a66"],
+
+	"tracerouteASHops":[
+	{
+		"hop":0,
+		"as":"3352",
+		"asName":"Telefonica de Espana",
+		"ixpName":"",
+		"type":"AS",
+		"inferred":false
+	},
+	{
+		"hop":1,
+		"as":"12956",
+		"asName":"Telefonica de Espana",
+		"ixpName":"",
+		"type":"AS",
+		"inferred":true
+	},
+	{
+		"hop":1,
+		"as":"3356",
+		"asName":"Level-3",
+		"ixpName":"",
+		"type":"AS",
+		"inferred":false
+	},
+	{
+		"hop":2,
+		"as":"10310",
+		"asName":"Yahoo-1",
+		"ixpName":"",
+		"type":"AS",
+		"inferred":false
+	}
+
+	],
+
+	"tracerouteASRelationships":[
+	{
+		"as0":3352,
+		"as1":12956,
+		"relationship":"S2S",
+		"hop":0
+
+	},
+	{
+		"as0":12956,
+		"as1":10310,
+		"relationship":"P2P",
+		"hop":1
+
+	}
+
+	],
+
+	"tracerouteASStats":{"completed":true,"tracerouteASRelationships":[],"asHops":1,"c2pRels":2,"p2pRels":0,"p2cRels":0,"s2sRels":0,"ixpRels":0,"nfRels":0,"flags":1}
+},
+{
+"timeStamp":1399040505215,"srcIp":"192.168.1.2","srcPublicIp":"82.80.5.3","dstIp":"78.5.6.1","dst":"yimg.com","srcAS":3352,"srcASName":"Telefonica de Espana","srcCity":"Barcelona","srcCountry":"Spain","dstAS":10310,"dstASName":"Yahoo-1","dstCity":"SunnyVale","dstCountry":"United States",
+	"tracerouteIpAttemptIds":["3c045640-d6c7-11e3-9c1a-0800200c9a66","421c8c50-d6c7-11e3-9c1a-0800200c9a66","4912ed60-d6c7-11e3-9c1a-0800200c9a66"],
+
+	"tracerouteASHops":[
+	{
+		"hop":0,
+		"as":"3352",
+		"asName":"Telefonica de Espana",
+		"ixpName":"",
+		"type":"AS",
+		"inferred":false
+	},
+	{
+		"hop":1,
+		"as":"12956",
+		"asName":"Telefonica de Espana",
+		"ixpName":"",
+		"type":"AS",
+		"inferred":true
+	},
+	{
+		"hop":1,
+		"as":"3356",
+		"asName":"Level-3",
+		"ixpName":"",
+		"type":"AS",
+		"inferred":false
+	},
+	{
+		"hop":2,
+		"as":"10310",
+		"asName":"Yahoo-1",
+		"ixpName":"",
+		"type":"AS",
+		"inferred":false
+	}
+
+	],
+
+	"tracerouteASRelationships":[
+	{
+		"as0":3352,
+		"as1":12956,
+		"relationship":"S2S",
+		"hop":0
+
+	},
+	{
+		"as0":12956,
+		"as1":10310,
+		"relationship":"P2P",
+		"hop":1
+
+	}
+
+	],
+
+	"tracerouteASStats":{"completed":true,"tracerouteASRelationships":[],"asHops":1,"c2pRels":2,"p2pRels":0,"p2cRels":0,"s2sRels":0,"ixpRels":0,"nfRels":0,"flags":1}
+}
 ]

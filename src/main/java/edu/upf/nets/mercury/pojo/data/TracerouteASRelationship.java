@@ -30,6 +30,26 @@ public class TracerouteASRelationship {
 	public void setRelationship(TracerouteASRelationship.Relationship relationship) {
 		this.relationship = relationship;
 	}
+	public void addRelationship(Integer rel) {
+        switch (rel) {
+            case -1:  this.relationship = Relationship.C2P;
+                     break;
+            case 0:  this.relationship = Relationship.P2P;
+                     break;
+            case 1:  this.relationship = Relationship.P2C;
+                     break;
+            case 2:  this.relationship = Relationship.S2S;
+                     break;
+            case 3:  this.relationship = Relationship.IXP;
+                     break;
+            case 10:  this.relationship = Relationship.NF;
+                     break;
+            default: this.relationship = Relationship.NF;
+                     break;
+        }
+		
+	}
+	
 	public int getHop() {
 		return hop;
 	}

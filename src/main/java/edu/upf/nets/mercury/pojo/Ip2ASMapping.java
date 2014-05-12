@@ -7,11 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.maxmind.geoip.Location;
+
+import edu.upf.nets.mercury.util.CustomDateSerializer;
 
 @Document(collection = "ip2asmapping")
 public class Ip2ASMapping {
@@ -94,6 +97,7 @@ public class Ip2ASMapping {
 	public void setNumIps(long numIps) {
 		this.numIps = numIps;
 	}
+	@JsonSerialize(using = CustomDateSerializer.class)
 	public Date getTimeStamp() {
 		return timeStamp;
 	}

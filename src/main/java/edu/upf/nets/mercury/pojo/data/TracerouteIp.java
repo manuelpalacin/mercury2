@@ -1,6 +1,7 @@
 package edu.upf.nets.mercury.pojo.data;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,7 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import edu.upf.nets.mercury.util.CustomDateSerializer;
 
 @Document(collection = "tracerouteip")
 public class TracerouteIp {
@@ -23,6 +27,7 @@ public class TracerouteIp {
 	private String dst;
 	private List<TracerouteIpFlow> tracerouteIpFlows;
 	private String tracerouteSettingsId;
+	private Date timeStamp;
 	
 	
 	public String getId() {
@@ -72,6 +77,13 @@ public class TracerouteIp {
 	}
 	public void setTracerouteSettingsId(String tracerouteSettingsId) {
 		this.tracerouteSettingsId = tracerouteSettingsId;
+	}
+	@JsonSerialize(using = CustomDateSerializer.class)
+	public Date getTimeStamp() {
+		return timeStamp;
+	}
+	public void setTimeStamp(Date timeStamp) {
+		this.timeStamp = timeStamp;
 	}
 	
 	

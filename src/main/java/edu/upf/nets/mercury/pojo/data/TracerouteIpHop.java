@@ -2,13 +2,17 @@ package edu.upf.nets.mercury.pojo.data;
 
 import java.util.Date;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import edu.upf.nets.mercury.util.CustomDateSerializer;
+
 public class TracerouteIpHop {
 
 	public enum State {
 		REQ_SENT, RESP_RECV
 	}
 	public enum Type {
-		TIME_EXCEEDED, DESTINATION_UNREACHABLE
+		ECHO_REPLY,TIME_EXCEEDED, DESTINATION_UNREACHABLE, UNKNOWN
 	}
 
 	private TracerouteIpHop.State state;
@@ -43,12 +47,14 @@ public class TracerouteIpHop {
 	public void setTtl(int ttl) {
 		this.ttl = ttl;
 	}
+	@JsonSerialize(using = CustomDateSerializer.class)
 	public Date getReqTimeStamp() {
 		return reqTimeStamp;
 	}
 	public void setReqTimeStamp(Date reqTimeStamp) {
 		this.reqTimeStamp = reqTimeStamp;
 	}
+	@JsonSerialize(using = CustomDateSerializer.class)
 	public Date getRespTimeStamp() {
 		return respTimeStamp;
 	}
