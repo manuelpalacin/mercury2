@@ -125,7 +125,7 @@ public class TracerouteDaoImpl implements TracerouteDao {
 	public List<TracerouteAS> getTracerouteASesBySrcAS(int srcAS, int flags) {
 		
 		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " tracerouteASStats.flags : "+flags+", "
+//				+ " tracerouteASStats.flags : "+flags+", "
 				+ " srcAS : "+srcAS+" }");
 		
 		return mongoTemplate.find( query
@@ -136,7 +136,7 @@ public class TracerouteDaoImpl implements TracerouteDao {
 	@Override
 	public List<TracerouteAS> getTracerouteASesByDstAS(int dstAS, int flags) {
 		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " tracerouteASStats.flags : "+flags+", "
+//				+ " tracerouteASStats.flags : "+flags+", "
 				+ " dstAS : "+dstAS+" }");
 		
 		return mongoTemplate.find( query
@@ -146,7 +146,7 @@ public class TracerouteDaoImpl implements TracerouteDao {
 	@Override
 	public List<TracerouteAS> getTracerouteASesByDst(String dst, int flags) {
 		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " tracerouteASStats.flags : "+flags+", "
+//				+ " tracerouteASStats.flags : "+flags+", "
 				+ " dst : \""+dst+"\" }");
 		
 		return mongoTemplate.find( query
@@ -157,7 +157,7 @@ public class TracerouteDaoImpl implements TracerouteDao {
 	public List<TracerouteAS> getTracerouteASesBySrcASAndDstAS(int srcAS,
 			int dstAS, int flags) {
 		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " tracerouteASStats.flags : "+flags+", "
+//				+ " tracerouteASStats.flags : "+flags+", "
 				+ " srcAS : "+srcAS+", "
 				+ " dstAS : "+dstAS+" }");
 		
@@ -169,7 +169,7 @@ public class TracerouteDaoImpl implements TracerouteDao {
 	public List<TracerouteAS> getTracerouteASesBySrcASAndDst(int srcAS,
 			String dst, int flags) {
 		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " tracerouteASStats.flags : "+flags+", "
+//				+ " tracerouteASStats.flags : "+flags+", "
 				+ " srcAS : "+srcAS+", "
 				+ " dst : "+dst+" }");
 		
@@ -180,7 +180,7 @@ public class TracerouteDaoImpl implements TracerouteDao {
 	@Override
 	public List<TracerouteAS> getTracerouteASesWithLteHops(int asHops, int flags) {
 		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " tracerouteASStats.flags : "+flags+", "
+//				+ " tracerouteASStats.flags : "+flags+", "
 				+ " tracerouteASStats.asHops : { $lte: "+asHops+"} }");
 		
 		return mongoTemplate.find( query
@@ -191,7 +191,7 @@ public class TracerouteDaoImpl implements TracerouteDao {
 	public List<TracerouteAS> getTracerouteASesWithLteHopsBySrcAS(int asHops,
 			int srcAS, int flags) {
 		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " tracerouteASStats.flags : "+flags+", "
+//				+ " tracerouteASStats.flags : "+flags+", "
 				+ " tracerouteASStats.asHops : { $lte: "+asHops+"},"
 				+ " srcAS : "+srcAS+" }");
 		
@@ -203,7 +203,7 @@ public class TracerouteDaoImpl implements TracerouteDao {
 	public List<TracerouteAS> getTracerouteASesWithLteHopsByDstAS(int asHops,
 			int dstAS, int flags) {
 		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " tracerouteASStats.flags : "+flags+", "
+//				+ " tracerouteASStats.flags : "+flags+", "
 				+ " tracerouteASStats.asHops : { $lte: "+asHops+"},"
 				+ " dstAS : "+dstAS+" }");
 		
@@ -230,7 +230,7 @@ public class TracerouteDaoImpl implements TracerouteDao {
 
 		
 		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " tracerouteASStats.flags : "+flags+", "
+//				+ " tracerouteASStats.flags : "+flags+", "
 				+ " tracerouteASStats.asHops : { $lte: "+asHops+"},"
 				+ " dst : \""+dst+"\" } ");
         

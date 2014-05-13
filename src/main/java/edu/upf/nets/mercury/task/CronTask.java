@@ -212,8 +212,9 @@ public class CronTask {
 					Ip2ASMapping newIp2ASMapping = new Ip2ASMapping();
 					newIp2ASMapping.setAs(as);
 					newIp2ASMapping.setAsName( asNames.get(as) );
-					newIp2ASMapping.setIxpParticipant(0);
-					newIp2ASMapping.setIxpParticipantName(null);
+					//newIp2ASMapping.setIxpParticipant(0);
+					//newIp2ASMapping.setIxpParticipantName(null);
+					newIp2ASMapping.setIxpName(null);
 					newIp2ASMapping.setPrefix(prefix);
 					newIp2ASMapping.setRangeLow(rangeLow);
 					newIp2ASMapping.setRangeHigh(rangeHigh);

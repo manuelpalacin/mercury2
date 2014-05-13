@@ -33,8 +33,7 @@ public class Ip2ASMapping {
 	@Indexed
 	private long numIps;
 	private String prefix;
-	private int ixpParticipant;
-	private String ixpParticipantName;
+	private String ixpName;
 	private Date timeStamp;
 	private String type;
 	@Transient
@@ -78,19 +77,7 @@ public class Ip2ASMapping {
 	public void setPrefix(String prefix) {
 		this.prefix = prefix;
 	}
-	public int getIxpParticipant() {
-		return ixpParticipant;
-	}
-	public void setIxpParticipant(int ixpParticipant) {
-		this.ixpParticipant = ixpParticipant;
-	}
-	
-	public String getIxpParticipantName() {
-		return ixpParticipantName;
-	}
-	public void setIxpParticipantName(String ixpParticipantName) {
-		this.ixpParticipantName = ixpParticipantName;
-	}
+
 	public long getNumIps() {
 		return numIps;
 	}
@@ -121,6 +108,12 @@ public class Ip2ASMapping {
 	}
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+	public String getIxpName() {
+		return ixpName;
+	}
+	public void setIxpName(String ixpName) {
+		this.ixpName = ixpName;
 	}
 		
 

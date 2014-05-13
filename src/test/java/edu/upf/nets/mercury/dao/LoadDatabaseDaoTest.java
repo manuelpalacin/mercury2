@@ -70,8 +70,8 @@ public class LoadDatabaseDaoTest {
 
 		//First we drop mappings from database
 		loadDatabaseDao.dropASInfos();
-		loadDatabaseDao.dropIp2AsnMappingsNoIxps();
-		//loadDatabaseDao.dropIp2AsnMappings();
+		//loadDatabaseDao.dropIp2AsnMappingsNoIxps();
+		loadDatabaseDao.dropIp2AsnMappings();
 
 		try{
 
@@ -116,8 +116,9 @@ public class LoadDatabaseDaoTest {
 					Ip2ASMapping newIp2ASMapping = new Ip2ASMapping();
 					newIp2ASMapping.setAs(as);
 					newIp2ASMapping.setAsName(asNames.get(as));
-					newIp2ASMapping.setIxpParticipant(0);
-					newIp2ASMapping.setIxpParticipantName(null);
+					//newIp2ASMapping.setIxpParticipant(0);
+					//newIp2ASMapping.setIxpParticipantName(null);
+					newIp2ASMapping.setIxpName(null);
 					newIp2ASMapping.setPrefix(prefix);
 					newIp2ASMapping.setRangeLow(rangeLow);
 					newIp2ASMapping.setRangeHigh(rangeHigh);
@@ -137,7 +138,7 @@ public class LoadDatabaseDaoTest {
 
 	}
 	
-	
+//This is an old version that obtains IP-2-AS from cidr-report	
 //	@Ignore
 //	@Test
 //	public void loadIp2AsnMappings(){
@@ -304,15 +305,15 @@ public class LoadDatabaseDaoTest {
     	    		boolean valid = false;
     	    		long rangeLow = 0;
     	    		long rangeHigh = 0;
-    	    		int as = 0;
+//    	    		int as = -1;
     	    		if (prefix.contains("/")){
     	    			if ( ipAddressValidator.findIpPrefix(prefix, 3) != null ){
     	    				valid = true;
     	    				long[] range = getRange(prefix);
     	    				rangeLow = range[1];
     	    				rangeHigh = range[2];
-    	    				if(loadDatabaseDao.getIp2AsnMappingByIp(rangeLow) != null)
-    	    					as = loadDatabaseDao.getIp2AsnMappingByIp(rangeLow).getAs();
+//    	    				if(loadDatabaseDao.getIp2AsnMappingByIp(rangeLow) != null)
+//    	    					as = loadDatabaseDao.getIp2AsnMappingByIp(rangeLow).getAs();
     	    			}
     	    		} else {
     	    			if ( ipAddressValidator.validate(prefix) ){
@@ -320,17 +321,18 @@ public class LoadDatabaseDaoTest {
     	    				long ipNum = ipToNum(prefix);
     	    				rangeLow = ipNum;
     	    				rangeHigh = ipNum;
-    	    				if(loadDatabaseDao.getIp2AsnMappingByIp(ipNum) != null)
-    	    					as = loadDatabaseDao.getIp2AsnMappingByIp(ipNum).getAs();
+//    	    				if(loadDatabaseDao.getIp2AsnMappingByIp(ipNum) != null)
+//    	    					as = loadDatabaseDao.getIp2AsnMappingByIp(ipNum).getAs();
     	    			}
     	    		}
     	    		if (valid){
 		    	    	Ip2ASMapping ip2ASMapping = new Ip2ASMapping();
-		    	    	ip2ASMapping.setAs(as); //We have to check the asn in the bgp registry
-		    	    	ip2ASMapping.setAsName((String)rs.getObject("mgmtpublics.name"));
-		    	    	ip2ASMapping.setIxpParticipant(Integer.parseInt(rs.getObject("peerparticipantspublics.local_asn").toString()));
-		    	    	ip2ASMapping.setIxpParticipantName((String)rs.getObject("peerparticipants.name"));
-	    	    		ip2ASMapping.setPrefix(prefix);
+		    	    	ip2ASMapping.setAs(Integer.parseInt(rs.getObject("peerparticipantspublics.local_asn").toString()));
+		    	    	ip2ASMapping.setAsName( (String)rs.getObject("peerparticipants.name") );
+		    	    	//ip2ASMapping.setIxpParticipant( Integer.parseInt(rs.getObject("peerparticipantspublics.local_asn").toString()) );
+		    	    	//ip2ASMapping.setIxpParticipantName( (String)rs.getObject("peerparticipants.name") );
+		    	    	ip2ASMapping.setIxpName((String)rs.getObject("mgmtpublics.name"));
+		    	    	ip2ASMapping.setPrefix(prefix);
 	    	    		ip2ASMapping.setRangeLow(rangeLow);
 	    	    		ip2ASMapping.setRangeHigh(rangeHigh);
 	    	    		ip2ASMapping.setNumIps(rangeHigh-rangeLow+1);
@@ -355,15 +357,15 @@ public class LoadDatabaseDaoTest {
     	    		boolean valid = false;
     	    		long rangeLow = 0;
     	    		long rangeHigh = 0;
-    	    		int as = 0;
+    	    		int as = -1;
     	    		if (prefix.contains("/")){
     	    			if ( ipAddressValidator.findIpPrefix(prefix, 3) != null ){
     	    				valid = true;
     	    				long[] range = getRange(prefix);
     	    				rangeLow = range[1];
     	    				rangeHigh = range[2];
-    	    				if(loadDatabaseDao.getIp2AsnMappingByIp(rangeLow) != null)
-    	    					as = loadDatabaseDao.getIp2AsnMappingByIp(rangeLow).getAs();
+//    	    				if(loadDatabaseDao.getIp2AsnMappingByIp(rangeLow) != null)
+//    	    					as = loadDatabaseDao.getIp2AsnMappingByIp(rangeLow).getAs();
     	    			}
     	    		} else {
     	    			if ( ipAddressValidator.validate(prefix) ){
@@ -371,15 +373,16 @@ public class LoadDatabaseDaoTest {
     	    				long ipNum = ipToNum(prefix);
     	    				rangeLow = ipNum;
     	    				rangeHigh = ipNum;
-    	    				if(loadDatabaseDao.getIp2AsnMappingByIp(ipNum) != null)
-    	    					as = loadDatabaseDao.getIp2AsnMappingByIp(ipNum).getAs();
+//    	    				if(loadDatabaseDao.getIp2AsnMappingByIp(ipNum) != null)
+//    	    					as = loadDatabaseDao.getIp2AsnMappingByIp(ipNum).getAs();
     	    			}
     	    		}
     	    		if (valid){
 		    	    	Ip2ASMapping ip2ASMapping = new Ip2ASMapping();
-		    	    	ip2ASMapping.setAs(as); //We have to check the asn in the bgp registry
+		    	    	ip2ASMapping.setAs(as);
 		    	    	ip2ASMapping.setAsName((String)rs.getObject("mgmtpublics.name"));
-		    	    	ip2ASMapping.setIxpParticipant(0);
+		    	    	//ip2ASMapping.setIxpParticipant(0);
+		    	    	ip2ASMapping.setIxpName((String)rs.getObject("mgmtpublics.name"));
 	    	    		ip2ASMapping.setPrefix(prefix);
 	    	    		ip2ASMapping.setRangeLow(rangeLow);
 	    	    		ip2ASMapping.setRangeHigh(rangeHigh);
