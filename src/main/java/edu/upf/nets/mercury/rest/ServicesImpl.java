@@ -243,8 +243,12 @@ public class ServicesImpl implements Services {
 			if(ipNum == -1){
 				return Response.status(200).entity( "Wrong ipv4 format. Please try again" ).build();
 			} else {
-				Location location = geoIpDatabase.getService().getLocation(ip);
-				location.setIp(ip);
+				Location location = null;
+				try{
+					location = geoIpDatabase.getService().getLocation(ip);
+					location.setIp(ip);
+				} catch(Exception e){
+				}
 				return Response.status(200).entity( location ).build();
 			}
 		} catch(Exception e){
@@ -261,9 +265,11 @@ public class ServicesImpl implements Services {
 				for (String ip : ipList) {
 					long ipNum = ipAddressValidator.ipToNum(ip);
 					if(ipNum != -1){
-						Location location = geoIpDatabase.getService().getLocation(ip);
-						location.setIp(ip);
-						resp.add(location);
+						try{
+							Location location = geoIpDatabase.getService().getLocation(ip);
+							location.setIp(ip);
+							resp.add(location);
+						} catch(Exception e){}
 					}
 				}
 				return Response.status(200).entity( resp ).build();
@@ -284,9 +290,11 @@ public class ServicesImpl implements Services {
 				for (String ip : ipList) {
 					long ipNum = ipAddressValidator.ipToNum(ip);
 					if(ipNum != -1){
-						Location location = geoIpDatabase.getService().getLocation(ip);
-						location.setIp(ip);
-						resp.add(location);
+						try{
+							Location location = geoIpDatabase.getService().getLocation(ip);
+							location.setIp(ip);
+							resp.add(location);
+						} catch(Exception e){}
 					}
 				}
 				return Response.status(200).entity( resp ).build();
@@ -308,8 +316,11 @@ public class ServicesImpl implements Services {
 					long ipNum = ipAddressValidator.ipToNum(ip);
 					if(ipNum != -1){
 						//First we find the geoLoc
-						Location location = geoIpDatabase.getService().getLocation(ip);
-						location.setIp(ip);
+						Location location = null;
+						try{
+							location = geoIpDatabase.getService().getLocation(ip);
+							location.setIp(ip);
+						} catch(Exception e){}
 						//Second we create and aux list with the ip2asn mapping and geoLoc
 						List<Ip2ASMapping> ip2ASMappingsAux = new ArrayList<Ip2ASMapping>();
 						List<Ip2ASMapping> ip2ASMappings = loadDatabaseDao.getIp2AsnMappingsByIp(ipNum);
@@ -339,8 +350,11 @@ public class ServicesImpl implements Services {
 					long ipNum = ipAddressValidator.ipToNum(ip);
 					if(ipNum != -1){
 						//First we find the geoLoc
-						Location location = geoIpDatabase.getService().getLocation(ip);
-						location.setIp(ip);
+						Location location = null;
+						try{
+							location = geoIpDatabase.getService().getLocation(ip);
+							location.setIp(ip);
+						} catch(Exception e){}
 						//Second we create and aux list with the ip2asn mapping and geoLoc
 						List<Ip2ASMapping> ip2ASMappingsAux = new ArrayList<Ip2ASMapping>();
 						List<Ip2ASMapping> ip2ASMappings = loadDatabaseDao.getIp2AsnMappingsByIp(ipNum);
