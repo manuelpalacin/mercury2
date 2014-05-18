@@ -35,18 +35,19 @@
 		</action>
 		
 		
-<!-- 
+
 	
 		<action name="getLastTraceroutes" class="tracerouteAction" method="getLastTraceroutes">
-			<result name="success">/tracelist.jsp</result>
+			<result name="success">/traceslist.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		
 		<action name="getTraceroute" class="tracerouteAction" method="getTraceroute">
-			<result name="success">/traceinfo.jsp</result>
+			<result name="success">/trace.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		
+
+<!-- 		
 		<action name="getASTracerouteStatsByDestination" class="tracerouteAction" method="getASTracerouteStatsByDestination">
 			<result name="success">/tracestats.jsp</result>
 			<result name="error">/error.jsp</result>

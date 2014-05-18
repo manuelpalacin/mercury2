@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 
 
+
 import edu.upf.nets.mercury.pojo.data.TracerouteAS;
 import edu.upf.nets.mercury.pojo.data.TracerouteIp;
 import edu.upf.nets.mercury.pojo.data.TracerouteSettings;
@@ -115,11 +116,31 @@ public class TracerouteDaoImpl implements TracerouteDao {
 		mongoTemplate.dropCollection(TracerouteAS.class);
 	}
 	
+	
+	@Override
+	public TracerouteAS getTracerouteAS(String id) {
+		return mongoTemplate.findById(id, TracerouteAS.class); 
+	}
+
+	
 
 	@Override
 	public List<TracerouteAS> getTracerouteASes(int limit) {
 		return mongoTemplate.find( new Query().limit(limit), TracerouteAS.class);
 	}
+	
+	@Override
+	public List<TracerouteAS> getTracerouteASesMin(int limit) {
+		Query query = new Query();
+		query.fields().exclude("tracerouteIpAttemptIds").exclude("tracerouteASHops").exclude("tracerouteASRelationships").exclude("tracerouteASStats");
+		query.limit(limit);
+		
+		return mongoTemplate.find( query
+				, TracerouteAS.class);
+		
+		
+	}
+	
 
 	@Override
 	public List<TracerouteAS> getTracerouteASesBySrcAS(int srcAS, int flags) {
@@ -251,6 +272,9 @@ public class TracerouteDaoImpl implements TracerouteDao {
 		
 		return tASes;
 	}
+
+
+
 
 
 

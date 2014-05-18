@@ -14,6 +14,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.googlecode.ehcache.annotations.TriggersRemove;
+import com.googlecode.ehcache.annotations.When;
+
 import edu.upf.nets.mercury.pojo.data.TracerouteAS;
 import edu.upf.nets.mercury.pojo.data.TracerouteIp;
 import edu.upf.nets.mercury.pojo.data.TracerouteSettings;
@@ -157,6 +160,7 @@ public interface Services {
 	@Path("/addTracerouteASPOST")
 	@Consumes("application/json")
 	@Produces("application/json")
+	@TriggersRemove(cacheName = "getTraceroutesCache", when = When.AFTER_METHOD_INVOCATION, removeAll = true)
 	public Response addTracerouteASPOST(@Context HttpServletRequest req, 
 			TracerouteAS tracerouteAS  );
 	
@@ -165,6 +169,7 @@ public interface Services {
 	@Path("/addTracerouteASesPOST")
 	@Consumes("application/json")
 	@Produces("application/json")
+	@TriggersRemove(cacheName = "getTraceroutesCache", when = When.AFTER_METHOD_INVOCATION, removeAll = true)
 	public Response addTracerouteASesPOST(@Context HttpServletRequest req, 
 			List<TracerouteAS> tracerouteASes  );
 	

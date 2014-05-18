@@ -33,7 +33,12 @@ public interface TracerouteDao {
 	
 	public void dropTracerouteASCollection();
 	
+	
+	public TracerouteAS getTracerouteAS(String id);
+	
 	public List<TracerouteAS> getTracerouteASes(int limit);
+	
+	public List<TracerouteAS> getTracerouteASesMin(int limit);
 	
 	public List<TracerouteAS> getTracerouteASesBySrcAS(int srcAS, int flags);
 	

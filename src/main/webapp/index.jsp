@@ -32,7 +32,7 @@
 				<p>You can browse information about the interconnection between ISPs. 
 					We focus on identifying how content providers reach the access ISPs.</p>
 				<p>
-					<a class="btn btn-default" href="#" role="button">View data!
+					<a class="btn btn-default" href="getLastTraceroutes" role="button">View data!
 						&raquo;</a>
 				</p>
 			</div>
