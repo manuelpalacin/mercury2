@@ -17,7 +17,7 @@
 		<section>
 			<h2>TracerouteAS details</h2>
 			
-			<display:table id="tracerouteAS" name="tracerouteAS" pagesize="10" export="false" requestURI="/getLastTraceroutes" class="table table-condensed table-hover">
+			<display:table id="tracerouteAS" name="tracerouteAS" pagesize="10" export="false" class="table table-condensed table-hover">
 					<display:column property="id" title="id" href="getTraceroute" paramId="id" paramProperty="id" sortable="true"/>
 					<display:column property="timeStamp" title="timeStamp" sortable="true"/>
 					
@@ -40,29 +40,24 @@
 					</display:column>
 					
 					
-					
-					
 					<display:column property="dstCountry" title="destination Country" href="getASTracerouteStatsByDestinationCountry" paramId="dstCountry" paramProperty="dstCountry" sortable="true" />
 					<display:column property="dstAS" title="destination AS" href="getASTracerouteStatsByDestinationAS" paramId="dstAS" paramProperty="dstAS" sortable="true" />
 					<display:column property="dstASName" title="destination AS Name" sortable="true"/>
 					
-			
 					<display:column title="view tr" >
 						<a href="api/services/getTracerouteASById/<s:url value="%{#attr.tracerouteAS.id}"/>" ><img alt="view" src="img/icons/icn_alert_info.png" /></a>
 					</display:column>
 
-					
-				<display:setProperty name="paging.banner.placement" value="bottom" />
 			</display:table>
 			
-			<display:table id="tracerouteASStats1" name="tracerouteASStats" export="false" class="table table-condensed">
+			<display:table id="tracerouteASStats1" name="tracerouteAS.tracerouteASStats" export="false" class="table table-condensed">
 					<display:column property="completed" title="completed" />
 					<display:column property="flags" title="flags" />
 					<display:column property="asHops" title="number AS Hops" />
 
 			</display:table>
 			
-			<display:table id="tracerouteASStats2" name="tracerouteASStats" export="false" class="table table-condensed">
+			<display:table id="tracerouteASStats2" name="tracerouteAS.tracerouteASStats" export="false" class="table table-condensed">
 					<display:column property="s2sRels" title="Sibling Relationships" />
 					<display:column property="p2cRels" title="Provider Relationships" />
 					<display:column property="c2pRels" title="Customer Relationships" />
@@ -75,11 +70,9 @@
 		
 		<section>
 			<div class="row-fluid">  
-				<div class="span3"><div id="chart_div0"></div></div>
-			</div>
-			<div class="row-fluid"> 
-				<div class="span3"><div id="chart_div1"></div></div>
-				<div class="span3"><div id="chart_div11"></div></div>		
+				<div class="col-md-4"><div class="span3"><div id="chart_div0"></div></div></div>
+				<div class="col-md-4"><div class="span3"><div id="chart_div1"></div></div></div>
+				<div class="col-md-4"><div class="span3"><div id="chart_div11"></div></div></div>		
 			</div> 
 		</section>
 
@@ -164,7 +157,7 @@
 		        data.addColumn('string', 'Hops');
 		        data.addColumn('number', '#');
 		        data.addRows([
-		          ['asHops', <s:property value="tracerouteASStats.asHops"  escapeJavaScript="true" />]
+		          ['asHops', <s:property value="tracerouteAS.tracerouteASStats.asHops"  escapeJavaScript="true" />]
 		        ]);
 		
 		        // Set chart options
@@ -198,12 +191,12 @@
 		        data.addColumn('string', 'Relationships');
 		        data.addColumn('number', '#');
 		        data.addRows([
-		          ['s2sRels',  <s:property value="tracerouteASStats.s2sRels"  escapeJavaScript="true" />],
-		          ['p2cRels', <s:property value="tracerouteASStats.p2cRels"  escapeJavaScript="true" />],
-		          ['c2pRels', <s:property value="tracerouteASStats.c2pRels"  escapeJavaScript="true" />],
-		          ['p2pRels', <s:property value="tracerouteASStats.p2pRels"  escapeJavaScript="true" />],
-		          ['nfRels', <s:property value="tracerouteASStats.nfRels"  escapeJavaScript="true" />],
-		          ['ixpRels', <s:property value="tracerouteASStats.ixpRels"  escapeJavaScript="true" />]
+		          ['s2sRels',  <s:property value="tracerouteAS.tracerouteASStats.s2sRels"  escapeJavaScript="true" />],
+		          ['p2cRels', <s:property value="tracerouteAS.tracerouteASStats.p2cRels"  escapeJavaScript="true" />],
+		          ['c2pRels', <s:property value="tracerouteAS.tracerouteASStats.c2pRels"  escapeJavaScript="true" />],
+		          ['p2pRels', <s:property value="tracerouteAS.tracerouteASStats.p2pRels"  escapeJavaScript="true" />],
+		          ['nfRels', <s:property value="tracerouteAS.tracerouteASStats.nfRels"  escapeJavaScript="true" />],
+		          ['ixpRels', <s:property value="tracerouteAS.tracerouteASStats.ixpRels"  escapeJavaScript="true" />]
 		        ]);
 		
 		        // Set chart options
@@ -236,12 +229,12 @@
 		        data.addColumn('string', 'Relationships');
 		        data.addColumn('number', '#');
 		        data.addRows([
-		    		          ['s2sRels',  <s:property value="tracerouteASStats.s2sRels"  escapeJavaScript="true" />],
-		    		          ['p2cRels', <s:property value="tracerouteASStats.p2cRels"  escapeJavaScript="true" />],
-		    		          ['c2pRels', <s:property value="tracerouteASStats.c2pRels"  escapeJavaScript="true" />],
-		    		          ['p2pRels', <s:property value="tracerouteASStats.p2pRels"  escapeJavaScript="true" />],
-		    		          ['nfRels', <s:property value="tracerouteASStats.nfRels"  escapeJavaScript="true" />],
-		    		          ['ixpRels', <s:property value="tracerouteASStats.ixpRels"  escapeJavaScript="true" />]
+		    		          ['s2sRels',  <s:property value="tracerouteAS.tracerouteASStats.s2sRels"  escapeJavaScript="true" />],
+		    		          ['p2cRels', <s:property value="tracerouteAS.tracerouteASStats.p2cRels"  escapeJavaScript="true" />],
+		    		          ['c2pRels', <s:property value="tracerouteAS.tracerouteASStats.c2pRels"  escapeJavaScript="true" />],
+		    		          ['p2pRels', <s:property value="tracerouteAS.tracerouteASStats.p2pRels"  escapeJavaScript="true" />],
+		    		          ['nfRels', <s:property value="tracerouteAS.tracerouteASStats.nfRels"  escapeJavaScript="true" />],
+		    		          ['ixpRels', <s:property value="tracerouteAS.tracerouteASStats.ixpRels"  escapeJavaScript="true" />]
 		        ]);
 		
 		        // Set chart options
