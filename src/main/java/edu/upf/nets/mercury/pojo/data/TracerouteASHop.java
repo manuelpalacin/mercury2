@@ -13,7 +13,7 @@ public class TracerouteASHop {
 	private String asName;
 	private String ixpName;
 	private TracerouteASHop.Type type;
-	private boolean inferred;//We use an heuristic to determine what is the most suitable AS
+	//private boolean inferred;//We use an heuristic to determine what is the most suitable AS
 	
 	
 	public int getHop() {
@@ -46,12 +46,12 @@ public class TracerouteASHop {
 	public void setType(TracerouteASHop.Type type) {
 		this.type = type;
 	}
-	public boolean isInferred() {
-		return inferred;
-	}
-	public void setInferred(boolean inferred) {
-		this.inferred = inferred;
-	}
+//	public boolean isInferred() {
+//		return inferred;
+//	}
+//	public void setInferred(boolean inferred) {
+//		this.inferred = inferred;
+//	}
 	
 	
 	

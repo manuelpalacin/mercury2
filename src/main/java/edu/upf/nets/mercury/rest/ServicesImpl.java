@@ -12,6 +12,8 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.googlecode.ehcache.annotations.TriggersRemove;
+import com.googlecode.ehcache.annotations.When;
 import com.maxmind.geoip.Location;
 
 import edu.upf.nets.mercury.dao.GeoIpDatabase;
@@ -411,7 +413,7 @@ public class ServicesImpl implements Services {
 	}
 
 
-
+	@TriggersRemove(cacheName = "getTraceroutesCache", when = When.AFTER_METHOD_INVOCATION, removeAll = true)
 	@Override
 	public Response addTracerouteASPOST(HttpServletRequest req,
 			TracerouteAS tracerouteAS) {
@@ -424,6 +426,7 @@ public class ServicesImpl implements Services {
 		}
 	}
 
+	@TriggersRemove(cacheName = "getTraceroutesCache", when = When.AFTER_METHOD_INVOCATION, removeAll = true)
 	@Override
 	public Response addTracerouteASesPOST(HttpServletRequest req,
 			List<TracerouteAS> tracerouteASes) {
@@ -453,6 +456,17 @@ public class ServicesImpl implements Services {
 		try {
 			int flags = 1;
 			List<TracerouteAS> resp = tracerouteDao.getTracerouteASesByDst(dst, flags);
+			return Response.status(200).entity( resp ).build();
+
+		} catch(Exception e){
+			return Response.status(200).entity( "Something went wrong. Please try again.").build();
+		}
+	}
+
+	@Override
+	public Response getTracerouteASById(HttpServletRequest req, String id) {
+		try {
+			TracerouteAS resp = tracerouteDao.getTracerouteAS(id);
 			return Response.status(200).entity( resp ).build();
 
 		} catch(Exception e){

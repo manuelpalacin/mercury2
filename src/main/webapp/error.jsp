@@ -7,6 +7,7 @@
 
 </head>
 <body>
-<h2>Error page!</h2>
+<h2>Error!</h2>
+<p>Probably you are trying to use a function that is not implemented yet. </p>
 </body>
 </html>

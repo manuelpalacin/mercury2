@@ -5,11 +5,13 @@ import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
+
 
 
 
@@ -134,7 +136,7 @@ public class TracerouteDaoImpl implements TracerouteDao {
 		Query query = new Query();
 		query.fields().exclude("tracerouteIpAttemptIds").exclude("tracerouteASHops").exclude("tracerouteASRelationships").exclude("tracerouteASStats");
 		query.limit(limit);
-		
+		query.with(new Sort(Sort.Direction.DESC, "timeStamp"));
 		return mongoTemplate.find( query
 				, TracerouteAS.class);
 		
