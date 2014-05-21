@@ -53,8 +53,8 @@ public class LoadDatabaseDaoImpl implements LoadDatabaseDao {
 					
 					asRelationships.put( params[0] + "\\|" + params[1] , Integer.parseInt(params[2]) );
 
-					if ( Integer.parseInt(params[2]) == -1) { //If customer
-						asRelationships.put( params[1] + "\\|" + params[0] , 1 ); // provider
+					if ( Integer.parseInt(params[2]) == -1) { //If provider
+						asRelationships.put( params[1] + "\\|" + params[0] , 1 ); // customer
 					} else {
 						asRelationships.put( params[1] + "\\|" + params[0] , Integer.parseInt(params[2]) );
 					}

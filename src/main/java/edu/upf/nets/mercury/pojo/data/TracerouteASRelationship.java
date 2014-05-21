@@ -32,11 +32,11 @@ public class TracerouteASRelationship {
 	}
 	public void addRelationship(Integer rel) {
         switch (rel) {
-            case -1:  this.relationship = Relationship.C2P;
+            case -1:  this.relationship = Relationship.P2C;
                      break;
             case 0:  this.relationship = Relationship.P2P;
                      break;
-            case 1:  this.relationship = Relationship.P2C;
+            case 1:  this.relationship = Relationship.C2P;
                      break;
             case 2:  this.relationship = Relationship.S2S;
                      break;
