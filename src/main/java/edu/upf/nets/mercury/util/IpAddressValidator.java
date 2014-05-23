@@ -99,4 +99,34 @@ public class IpAddressValidator{
                    "." + ((i >> 8) & 0xFF) + 
                    "." + (i & 0xFF);
 	}
+	
+	
+	public long[] getRange(String ipWithMask){
+		
+		String[] ip = ipWithMask.split("/");
+		String[] ipPosition = ip[0].split("\\.");	
+		//Step 0. Check only IPv4 addresses
+		if (ipPosition.length == 4){
+			// Step 1. Convert IPs into ints (32 bits).
+	        long addr = 0; 
+	        for (int i = 0; i < ipPosition.length; i++) { 
+	            int power = 3 - i;
+	            addr += ((Integer.parseInt(ipPosition[i]) % 256 * Math.pow(256, power))); 
+	        } 
+			// Step 2. Get CIDR mask
+			int mask = (-1) << (32 - Integer.parseInt(ip[1]));
+			// Step 3. Find lowest IP address
+			long rangeLow = addr & mask;
+			// Step 4. Find highest IP address
+			long rangeHigh = rangeLow + (~mask);
+			long[] data = {addr,rangeLow,rangeHigh};
+			return data;
+			
+		} else {
+			//log.info("Error for: "+ipWithMask);
+			long[] data = {0,0,0};
+			return data;
+		}
+	}
+	
 }

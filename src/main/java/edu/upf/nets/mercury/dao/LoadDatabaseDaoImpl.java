@@ -1,6 +1,7 @@
 package edu.upf.nets.mercury.dao;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
@@ -14,6 +15,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
+import org.xbill.DNS.DClass;
+import org.xbill.DNS.Lookup;
+import org.xbill.DNS.SimpleResolver;
+import org.xbill.DNS.Type;
 
 import edu.upf.nets.mercury.pojo.ASInfo;
 import edu.upf.nets.mercury.pojo.Ip2ASMapping;
@@ -172,10 +177,22 @@ public class LoadDatabaseDaoImpl implements LoadDatabaseDao {
 						and("rangeHigh").gte(ip)).
 						with(new Sort(Sort.Direction.ASC, "numIps")), 
 					Ip2ASMapping.class);
+		
+		String ipAddress = ipAddressValidator.longToIp(ip);
+		
+		//Fallback in case the IP is not found. We use CYMRU DNS
+		if(list.isEmpty()){
+			Ip2ASMapping ip2ASMapping = getAsMappingsDNS(ipAddress);
+			if(ip2ASMapping != null){
+				list.add(ip2ASMapping);
+			}
+		}
+		
+		
 		//we include the ip address in each element
 		ListIterator<Ip2ASMapping> litr = list.listIterator();
         while(litr.hasNext()){
-            litr.next().setIp(ipAddressValidator.longToIp(ip));
+            litr.next().setIp(ipAddress);
         }
 		return list;
 	}
@@ -227,6 +244,75 @@ public class LoadDatabaseDaoImpl implements LoadDatabaseDao {
 		mongoTemplate.save(asInfo);
 	}
 
+	
+	
+	public Ip2ASMapping getAsMappingsDNS(String ip) {
+
+		Ip2ASMapping ip2ASMapping = null;
+		
+
+				try{
+
+					String[] octets = ip.split("\\.");
+					String reversedIp = octets[3]+"."+octets[2]+"."+octets[1]+"."+octets[0];
+					String query = reversedIp + ".origin.asn.cymru.com";
+					String line = "";
+
+					Lookup l = new Lookup(query, Type.TXT, DClass.IN);
+					l.setResolver(new SimpleResolver());
+					l.run();
+
+					if (l.getResult() == Lookup.SUCCESSFUL){
+						line = l.getAnswers()[0].rdataToString();
+						line = line.substring(1, line.length()-1);
+						String[] params = line.split("\\|");
+						if (params.length <= 5) {
+							String asName = "Not found";
+							try{
+								query = "AS" + params[0].trim() + ".asn.cymru.com";
+								l = new Lookup(query, Type.TXT, DClass.IN);
+								l.setResolver(new SimpleResolver());
+								l.run();
+								if (l.getResult() == Lookup.SUCCESSFUL){
+									line = l.getAnswers()[0].rdataToString();
+									line = line.substring(1, line.length()-1);
+									String[] params2 = line.split("\\|");
+									if (params2.length <= 5) {
+										asName = params2[4].trim();
+									}
+
+								} else{
+									asName = "Not found";
+								}
+							}catch(Exception e){
+								asName = "Not found";
+							}
+							
+							int as = Integer.parseInt(params[0].trim());
+							String bgpPrefix = params[1].trim();
+							long[] range = ipAddressValidator.getRange(bgpPrefix);
+							long ipNum = range[0];
+							long rangeLow = range[1];
+							long rangeHigh = range[2];
+							
+							ip2ASMapping = new Ip2ASMapping(as, asName, rangeLow, rangeHigh, rangeHigh-rangeLow+1, bgpPrefix, null, new Date(), "AS");
+							//now we save it in Mongo for future uses
+							addIp2AsnMapping(ip2ASMapping);
+							
+						}
+
+
+					} else {
+						return null;
+					}
+
+				} catch(Exception e){
+					return null;
+				}
+
+		
+    	return ip2ASMapping;
+	}
 
 
 }

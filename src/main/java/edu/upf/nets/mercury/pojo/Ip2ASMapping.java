@@ -41,6 +41,28 @@ public class Ip2ASMapping {
 	@Transient
 	private Location location;
 	
+	
+	public Ip2ASMapping(){}
+	
+
+	
+	public Ip2ASMapping(int as, String asName, long rangeLow, long rangeHigh,
+			long numIps, String prefix, String ixpName, Date timeStamp,
+			String type) {
+		super();
+		this.as = as;
+		this.asName = asName;
+		this.rangeLow = rangeLow;
+		this.rangeHigh = rangeHigh;
+		this.numIps = numIps;
+		this.prefix = prefix;
+		this.ixpName = ixpName;
+		this.timeStamp = timeStamp;
+		this.type = type;
+	}
+
+
+
 	public String getId() {
 		return id;
 	}
