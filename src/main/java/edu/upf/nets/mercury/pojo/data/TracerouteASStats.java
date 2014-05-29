@@ -1,5 +1,9 @@
 package edu.upf.nets.mercury.pojo.data;
 
+import org.springframework.data.annotation.Transient;
+
+import edu.upf.nets.mercury.pojo.data.stats.ExtraStats;
+
 
 public class TracerouteASStats {
 	
@@ -12,6 +16,8 @@ public class TracerouteASStats {
 	private int nfRels;
 	private boolean completed;
 	private int flags;
+	@Transient
+	private ExtraStats extraStats;
 	
 	public TracerouteASStats(){}
 	
@@ -83,6 +89,13 @@ public class TracerouteASStats {
 	}
 	public void setFlags(int flags) {
 		this.flags = flags;
+	}
+
+	public ExtraStats getExtraStats() {
+		return extraStats;
+	}
+	public void setExtraStats(ExtraStats extraStats) {
+		this.extraStats = extraStats;
 	}
 
 	

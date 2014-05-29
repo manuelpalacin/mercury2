@@ -79,10 +79,7 @@
 			<result name="success">/tracestats.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>	
-		<action name="viewProcessingCurrentStatusStat" class="tracerouteAction" method="viewProcessingCurrentStatusStat">
-			<result name="success">/processingstatus.jsp</result>
-			<result name="error">/error.jsp</result>
-		</action>		
+	
 
  -->
 				
