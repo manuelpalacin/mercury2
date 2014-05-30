@@ -342,12 +342,12 @@ public class TracerouteStatsManagerImpl implements TracerouteStatsManager {
 						countryDstMatchingsMap.put(dstCountry, new Long(1));
 					}
 
-					
-					if(ipSrcMatchingsMap.get(asTracerouteStat.getExtraStats().getSrcIp()) != null){
-						ipSrcMatchings = Long.valueOf( ipSrcMatchingsMap.get(asTracerouteStat.getExtraStats().getSrcIp()).longValue() + 1 );
-						ipSrcMatchingsMap.put(asTracerouteStat.getExtraStats().getSrcIp(), ipSrcMatchings);
+					//We use public SRC Ip instead of the private IP
+					if(ipSrcMatchingsMap.get(asTracerouteStat.getExtraStats().getSrcPublicIp()) != null){
+						ipSrcMatchings = Long.valueOf( ipSrcMatchingsMap.get(asTracerouteStat.getExtraStats().getSrcPublicIp()).longValue() + 1 );
+						ipSrcMatchingsMap.put(asTracerouteStat.getExtraStats().getSrcPublicIp(), ipSrcMatchings);
 					} else {
-						ipSrcMatchingsMap.put(asTracerouteStat.getExtraStats().getSrcIp(), new Long(1));
+						ipSrcMatchingsMap.put(asTracerouteStat.getExtraStats().getSrcPublicIp(), new Long(1));
 					}
 				
 					if(ipDstMatchingsMap.get(asTracerouteStat.getExtraStats().getDstIp()) != null){
