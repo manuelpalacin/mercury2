@@ -47,41 +47,41 @@
 			<result name="error">/error.jsp</result>
 		</action>
 
-<!-- 		
-		<action name="getASTracerouteStatsByDestination" class="tracerouteAction" method="getASTracerouteStatsByDestination">
+		<!-- Statistics 	-->	
+		<action name="getTracerouteASStatsByDst" class="tracerouteAction" method="getTracerouteASStatsByDst">
 			<result name="success">/tracestats.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		
-		<action name="getASTracerouteStatsByDestinationAS" class="tracerouteAction" method="getASTracerouteStatsByDestinationAS">
+		<action name="getTracerouteASStatsByDstAS" class="tracerouteAction" method="getTracerouteASStatsByDstAS">
 			<result name="success">/tracestats.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		
-		<action name="getASTracerouteStatsByOriginAS" class="tracerouteAction" method="getASTracerouteStatsByOriginAS">
+		<action name="getTracerouteASStatsBySrcAS" class="tracerouteAction" method="getTracerouteASStatsBySrcAS">
 			<result name="success">/tracestats.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>		
 
-		<action name="getASTracerouteStatsByDestinationCity" class="tracerouteAction" method="getASTracerouteStatsByDestinationCity">
+		<action name="getTracerouteASStatsByDstCity" class="tracerouteAction" method="getTracerouteASStatsByDstCity">
 			<result name="success">/tracestats.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		<action name="getASTracerouteStatsByDestinationCountry" class="tracerouteAction" method="getASTracerouteStatsByDestinationCountry">
+		<action name="getTracerouteASStatsByDstCountry" class="tracerouteAction" method="getTracerouteASStatsByDstCountry">
 			<result name="success">/tracestats.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		<action name="getASTracerouteStatsByOriginCity" class="tracerouteAction" method="getASTracerouteStatsByOriginCity">
+		<action name="getTracerouteASStatsBySrcCity" class="tracerouteAction" method="getTracerouteASStatsBySrcCity">
 			<result name="success">/tracestats.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		<action name="getASTracerouteStatsByOriginCountry" class="tracerouteAction" method="getASTracerouteStatsByOriginCountry">
+		<action name="getTracerouteASStatsBySrcCountry" class="tracerouteAction" method="getTracerouteASStatsBySrcCountry">
 			<result name="success">/tracestats.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>	
 	
 
- -->
+
 				
  	</package>
  	

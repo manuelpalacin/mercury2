@@ -24,18 +24,18 @@
 					
 					<display:column property="srcPublicIp" title="origin Ip" sortable="true"/>
 					<display:column title="srcCity" sortable="true">
-						<a href="getASTracerouteStatsByOriginCity?srcCity=<s:url value="%{#attr.tracerouteASes.srcCity}"/>&srcCountry=<s:url value="%{#attr.tracerouteASes.srcCountry}"/>" >
+						<a href="getTracerouteASStatsBySrcCity?srcCity=<s:url value="%{#attr.tracerouteASes.srcCity}"/>&srcCountry=<s:url value="%{#attr.tracerouteASes.srcCountry}"/>" >
 							<s:url value="%{#attr.tracerouteASes.srcCity}"/>
 						</a>
 					</display:column>
 					
-					<display:column property="srcCountry" title="origin Country" href="getASTracerouteStatsByOriginCountry" paramId="srcCountry" paramProperty="srcCountry" sortable="true" />			
-					<display:column property="srcAS" title="origin AS" href="getASTracerouteStatsByOriginAS" paramId="srcAS" paramProperty="srcAS" sortable="true" />
+					<display:column property="srcCountry" title="origin Country" href="getTracerouteASStatsBySrcCountry" paramId="srcCountry" paramProperty="srcCountry" sortable="true" />			
+					<display:column property="srcAS" title="origin AS" href="getTracerouteASStatsBySrcAS" paramId="srcAS" paramProperty="srcAS" sortable="true" />
 					<display:column property="srcASName" title="origin AS Name" sortable="true"/>
-					<display:column property="dst" title="destination" href="getASTracerouteStatsByDestination" paramId="dst" paramProperty="dst" sortable="true" />
+					<display:column property="dst" title="destination" href="getTracerouteASStatsByDst" paramId="dst" paramProperty="dst" sortable="true" />
 					<display:column property="dstIp" title="destination Ip" sortable="true"/>
 					<display:column title="destination City" sortable="true" >
-						<a href="getASTracerouteStatsByDestinationCity?dstCity=<s:url value="%{#attr.tracerouteASes.dstCity}"/>&dstCountry=<s:url value="%{#attr.tracerouteASes.dstCountry}"/>" >
+						<a href="getTracerouteASStatsByDstCity?dstCity=<s:url value="%{#attr.tracerouteASes.dstCity}"/>&dstCountry=<s:url value="%{#attr.tracerouteASes.dstCountry}"/>" >
 							<s:url value="%{#attr.tracerouteASes.dstCity}"/>
 						</a>
 					</display:column>
@@ -43,8 +43,8 @@
 					
 					
 					
-					<display:column property="dstCountry" title="destination Country" href="getASTracerouteStatsByDestinationCountry" paramId="dstCountry" paramProperty="dstCountry" sortable="true" />
-					<display:column property="dstAS" title="destination AS" href="getASTracerouteStatsByDestinationAS" paramId="dstAS" paramProperty="dstAS" sortable="true" />
+					<display:column property="dstCountry" title="destination Country" href="getTracerouteASStatsByDstCountry" paramId="dstCountry" paramProperty="dstCountry" sortable="true" />
+					<display:column property="dstAS" title="destination AS" href="getTracerouteASStatsByDstAS" paramId="dstAS" paramProperty="dstAS" sortable="true" />
 					<display:column property="dstASName" title="destination AS Name" sortable="true"/>
 					
 			

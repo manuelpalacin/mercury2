@@ -40,48 +40,80 @@ public class TracerouteStatsManagerImpl implements TracerouteStatsManager {
 	@Override
 	public TracerouteASAggregatedStats getTracerouteASStatsByDstAS(
 			int dstAS, boolean full) {
-		// TODO Auto-generated method stub
-		return null;
+		TracerouteASAggregatedStats tracerouteASAggregatedStats = generateASTracerouteAggregationStat(
+				"ASTraceroute Stats by destination AS", 
+				tracerouteStatsDao.getTracerouteASStatsByDstAS(dstAS), 
+				full);
+		tracerouteASAggregatedStats.setDstAS(dstAS);
+		
+		return tracerouteASAggregatedStats;
 	}
 
 
 	@Override
 	public TracerouteASAggregatedStats getTracerouteASStatsBySrcAS(
 			int srcAS, boolean full) {
-		// TODO Auto-generated method stub
-		return null;
+		TracerouteASAggregatedStats tracerouteASAggregatedStats = generateASTracerouteAggregationStat(
+				"ASTraceroute Stats by source AS", 
+				tracerouteStatsDao.getTracerouteASStatsBySrcAS(srcAS), 
+				full);
+		tracerouteASAggregatedStats.setSrcAS(srcAS);
+		
+		return tracerouteASAggregatedStats;
 	}
 
 
 	@Override
 	public TracerouteASAggregatedStats getTracerouteASStatsByDstCity(
 			String dstCity, String dstCountry, boolean full) {
-		// TODO Auto-generated method stub
-		return null;
+		TracerouteASAggregatedStats tracerouteASAggregatedStats = generateASTracerouteAggregationStat(
+				"ASTraceroute Stats by destination City", 
+				tracerouteStatsDao.getTracerouteASStatsByDstCity(dstCity, dstCountry), 
+				full);
+		tracerouteASAggregatedStats.setDstCity(dstCity);
+		tracerouteASAggregatedStats.setDstCountry(dstCountry);
+		
+		return tracerouteASAggregatedStats;
 	}
 
 
 	@Override
 	public TracerouteASAggregatedStats getTracerouteASStatsByDstCountry(
 			String dstCountry, boolean full) {
-		// TODO Auto-generated method stub
-		return null;
+		TracerouteASAggregatedStats tracerouteASAggregatedStats = generateASTracerouteAggregationStat(
+				"ASTraceroute Stats by destination Country", 
+				tracerouteStatsDao.getTracerouteASStatsByDstCountry(dstCountry), 
+				full);
+		tracerouteASAggregatedStats.setDstCountry(dstCountry);
+		
+		return tracerouteASAggregatedStats;
 	}
 
 
 	@Override
 	public TracerouteASAggregatedStats getTracerouteASStatsBySrcCity(
 			String srcCity, String srcCountry, boolean full) {
-		// TODO Auto-generated method stub
-		return null;
+		TracerouteASAggregatedStats tracerouteASAggregatedStats = generateASTracerouteAggregationStat(
+				"ASTraceroute Stats by source City", 
+				tracerouteStatsDao.getTracerouteASStatsBySrcCity(srcCity, srcCountry), 
+				full);
+		tracerouteASAggregatedStats.setSrcCity(srcCity);
+		tracerouteASAggregatedStats.setSrcCountry(srcCountry);
+		
+		return tracerouteASAggregatedStats;
 	}
 
 
 	@Override
 	public TracerouteASAggregatedStats getTracerouteASStatsBySrcCountry(
 			String srcCountry, boolean full) {
-		// TODO Auto-generated method stub
-		return null;
+		TracerouteASAggregatedStats tracerouteASAggregatedStats = generateASTracerouteAggregationStat(
+				"ASTraceroute Stats by source Country", 
+				tracerouteStatsDao.getTracerouteASStatsBySrcCountry( srcCountry), 
+				full);
+		tracerouteASAggregatedStats.setSrcCountry(srcCountry);
+		
+		return tracerouteASAggregatedStats;
 	}
 
 	

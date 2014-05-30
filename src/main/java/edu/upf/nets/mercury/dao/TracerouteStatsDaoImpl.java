@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import edu.upf.nets.mercury.pojo.data.TracerouteAS;
@@ -22,10 +24,11 @@ public class TracerouteStatsDaoImpl implements TracerouteStatsDao {
 	@Override
 	public List<TracerouteASStats> getTracerouteASStatsByDst(
 			String dst) {
-
-		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " dst : \""+dst+"\" }");
 		
+		Query query = new Query( Criteria.
+				where("dst").is(dst)
+				);
+		query.fields().exclude("tracerouteIpAttemptIds").exclude("tracerouteASHops").exclude("tracerouteASRelationships");
 		return executeStatsQuery(query);
 
 	}
@@ -33,18 +36,22 @@ public class TracerouteStatsDaoImpl implements TracerouteStatsDao {
 	@Override
 	public List<TracerouteASStats> getTracerouteASStatsByDstAS(
 			int dstAS) {
-		
-		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " dstAS : "+dstAS+" }");
+			
+		Query query = new Query( Criteria.
+				where("dstAS").is(dstAS)
+				);
+		query.fields().exclude("tracerouteIpAttemptIds").exclude("tracerouteASHops").exclude("tracerouteASRelationships");
 		
 		return executeStatsQuery(query);
 	}
 
 	@Override
 	public List<TracerouteASStats> getTracerouteASStatsBySrcAS(int srcAS) {
-		
-		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " srcAS : "+srcAS+" }");
+			
+		Query query = new Query( Criteria.
+				where("srcAS").is(srcAS)
+				);
+		query.fields().exclude("tracerouteIpAttemptIds").exclude("tracerouteASHops").exclude("tracerouteASRelationships");
 		
 		return executeStatsQuery(query);
 	}
@@ -53,8 +60,11 @@ public class TracerouteStatsDaoImpl implements TracerouteStatsDao {
 	public List<TracerouteASStats> getTracerouteASStatsByDstCity(
 			String dstCity, String dstCountry) {
 		
-		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " dstCity : \""+dstCity+"\", dstCountry : \""+dstCountry+"\" }");
+		Query query = new Query( Criteria.
+				where("dstCity").is(dstCity)
+				.and("dstCountry").gte(dstCountry)
+				);
+		query.fields().exclude("tracerouteIpAttemptIds").exclude("tracerouteASHops").exclude("tracerouteASRelationships");
 		
 		return executeStatsQuery(query);
 	}
@@ -63,8 +73,10 @@ public class TracerouteStatsDaoImpl implements TracerouteStatsDao {
 	public List<TracerouteASStats> getTracerouteASStatsByDstCountry(
 			String dstCountry) {
 		
-		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " dstCountry : \""+dstCountry+"\" }");
+		Query query = new Query( Criteria.
+				where("dstCountry").is(dstCountry)
+				);
+		query.fields().exclude("tracerouteIpAttemptIds").exclude("tracerouteASHops").exclude("tracerouteASRelationships");
 		
 		return executeStatsQuery(query);
 	}
@@ -72,9 +84,12 @@ public class TracerouteStatsDaoImpl implements TracerouteStatsDao {
 	@Override
 	public List<TracerouteASStats> getTracerouteASStatsBySrcCity(
 			String srcCity, String srcCountry) {
-		
-		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " srcCity : \""+srcCity+"\", srcCountry : \""+srcCountry+"\" }");
+	
+		Query query = new Query( Criteria.
+				where("srcCity").is(srcCity)
+				.and("srcCountry").gte(srcCountry)
+				);
+		query.fields().exclude("tracerouteIpAttemptIds").exclude("tracerouteASHops").exclude("tracerouteASRelationships");
 		
 		return executeStatsQuery(query);
 	}
@@ -82,9 +97,11 @@ public class TracerouteStatsDaoImpl implements TracerouteStatsDao {
 	@Override
 	public List<TracerouteASStats> getTracerouteASStatsBySrcCountry(
 			String srcCountry) {
-		
-		BasicQuery query = new BasicQuery("{ tracerouteASStats.completed : true, "
-				+ " srcCountry : \""+srcCountry+"\" }");
+
+		Query query = new Query( Criteria.
+				where("srcCountry").is(srcCountry)
+				);
+		query.fields().exclude("tracerouteIpAttemptIds").exclude("tracerouteASHops").exclude("tracerouteASRelationships");
 		
 		return executeStatsQuery(query);
 	}
@@ -92,7 +109,7 @@ public class TracerouteStatsDaoImpl implements TracerouteStatsDao {
 	
 	
 	
-	private List<TracerouteASStats> executeStatsQuery(BasicQuery query){
+	private List<TracerouteASStats> executeStatsQuery(Query query){
 		
 		List<TracerouteASStats> stats = new ArrayList<TracerouteASStats>();
 		List<TracerouteAS> tracerouteASes = mongoTemplate.find( query, TracerouteAS.class);

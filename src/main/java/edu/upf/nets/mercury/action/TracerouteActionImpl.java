@@ -11,7 +11,9 @@ import com.googlecode.ehcache.annotations.Cacheable;
 import com.opensymphony.xwork2.ActionSupport;
 
 import edu.upf.nets.mercury.dao.TracerouteDao;
+import edu.upf.nets.mercury.manager.TracerouteStatsManager;
 import edu.upf.nets.mercury.pojo.data.TracerouteAS;
+import edu.upf.nets.mercury.pojo.data.stats.TracerouteASAggregatedStats;
 
 @Controller("tracerouteAction")
 public class TracerouteActionImpl extends ActionSupport implements TracerouteAction{
@@ -25,9 +27,20 @@ public class TracerouteActionImpl extends ActionSupport implements TracerouteAct
 	private String id;
 	private String tracerouteASHopsJson;
 	private String tracerouteASRelationshipsJson;
+	private TracerouteASAggregatedStats tracerouteASAggregatedStats;
+	private int srcAS;
+	private String srcCity;
+	private String srcCountry;
+	private String dst;
+	private int dstAS;
+	private String dstCity;
+	private String dstCountry;
+	
 	
 	@Autowired
 	TracerouteDao tracerouteDao;
+	@Autowired
+	TracerouteStatsManager tracerouteStatsManager;
 	
 	
 	@Cacheable(cacheName = "getTraceroutesCache")
@@ -49,47 +62,48 @@ public class TracerouteActionImpl extends ActionSupport implements TracerouteAct
 		return SUCCESS;
 	}
 
+
 	@Override
-	public String getASTracerouteStatsByDestination() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getTracerouteASStatsByDst() {
+		this.tracerouteASAggregatedStats = tracerouteStatsManager.getTracerouteASStatsByDst(dst, false);
+		return SUCCESS;
 	}
 
 	@Override
-	public String getASTracerouteStatsByDestinationAS() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getTracerouteASStatsByDstAS() {
+		this.tracerouteASAggregatedStats = tracerouteStatsManager.getTracerouteASStatsByDstAS(dstAS, false);
+		return SUCCESS;
 	}
 
 	@Override
-	public String getASTracerouteStatsByOriginAS() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getTracerouteASStatsBySrcAS() {
+		this.tracerouteASAggregatedStats = tracerouteStatsManager.getTracerouteASStatsBySrcAS(srcAS, false);
+		return SUCCESS;
 	}
 
 	@Override
-	public String getASTracerouteStatsByDestinationCity() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getTracerouteASStatsByDstCity() {
+		this.tracerouteASAggregatedStats = tracerouteStatsManager.getTracerouteASStatsByDstCity(dstCity,dstCountry, false);
+		return SUCCESS;
 	}
 
 	@Override
-	public String getASTracerouteStatsByDestinationCountry() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getTracerouteASStatsByDstCountry() {
+		this.tracerouteASAggregatedStats = tracerouteStatsManager.getTracerouteASStatsByDstCountry(dstCountry, false);
+		return SUCCESS;
 	}
 
 	@Override
-	public String getASTracerouteStatsByOriginCity() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getTracerouteASStatsBySrcCity() {
+		this.tracerouteASAggregatedStats = tracerouteStatsManager.getTracerouteASStatsBySrcCity(srcCity,srcCountry, false);
+		return SUCCESS;
 	}
 
 	@Override
-	public String getASTracerouteStatsByOriginCountry() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public String getTracerouteASStatsBySrcCountry() {
+		this.tracerouteASAggregatedStats = tracerouteStatsManager.getTracerouteASStatsBySrcCountry(srcCountry, false);
+		return SUCCESS;
+	}	
 	
 	
 	
@@ -142,7 +156,74 @@ public class TracerouteActionImpl extends ActionSupport implements TracerouteAct
 	public void setTracerouteASRelationshipsJson(
 			String tracerouteASRelationshipsJson) {
 		this.tracerouteASRelationshipsJson = tracerouteASRelationshipsJson;
-	}	
+	}
+
+	public TracerouteASAggregatedStats getTracerouteASAggregatedStats() {
+		return tracerouteASAggregatedStats;
+	}
+
+	public void setTracerouteASAggregatedStats(
+			TracerouteASAggregatedStats tracerouteASAggregatedStats) {
+		this.tracerouteASAggregatedStats = tracerouteASAggregatedStats;
+	}
+
+	public int getSrcAS() {
+		return srcAS;
+	}
+
+	public void setSrcAS(int srcAS) {
+		this.srcAS = srcAS;
+	}
+
+	public String getSrcCity() {
+		return srcCity;
+	}
+
+	public void setSrcCity(String srcCity) {
+		this.srcCity = srcCity;
+	}
+
+	public String getSrcCountry() {
+		return srcCountry;
+	}
+
+	public void setSrcCountry(String srcCountry) {
+		this.srcCountry = srcCountry;
+	}
+
+	public String getDst() {
+		return dst;
+	}
+
+	public void setDst(String dst) {
+		this.dst = dst;
+	}
+
+	public int getDstAS() {
+		return dstAS;
+	}
+
+	public void setDstAS(int dstAS) {
+		this.dstAS = dstAS;
+	}
+
+	public String getDstCity() {
+		return dstCity;
+	}
+
+	public void setDstCity(String dstCity) {
+		this.dstCity = dstCity;
+	}
+
+	public String getDstCountry() {
+		return dstCountry;
+	}
+
+	public void setDstCountry(String dstCountry) {
+		this.dstCountry = dstCountry;
+	}
+
+
 	
 
 }

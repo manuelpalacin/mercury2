@@ -8,19 +8,19 @@ public interface TracerouteAction {
 	
 	public String getTraceroute();
 	
-	public String getASTracerouteStatsByDestination();
+	public String getTracerouteASStatsByDst();
 	
-	public String getASTracerouteStatsByDestinationAS();
+	public String getTracerouteASStatsByDstAS();
 
-	public String getASTracerouteStatsByOriginAS();
+	public String getTracerouteASStatsBySrcAS();
 	
-	public String getASTracerouteStatsByDestinationCity();
+	public String getTracerouteASStatsByDstCity();
 	
-	public String getASTracerouteStatsByDestinationCountry();
+	public String getTracerouteASStatsByDstCountry();
 	
-	public String getASTracerouteStatsByOriginCity();
+	public String getTracerouteASStatsBySrcCity();
 	
-	public String getASTracerouteStatsByOriginCountry();
+	public String getTracerouteASStatsBySrcCountry();
 	
 	
 	
