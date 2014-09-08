@@ -17,6 +17,8 @@ public class TracerouteASStats {
 	private boolean completed;
 	private int flags;
 	@Transient
+	private String flagsHEX;
+	@Transient
 	private ExtraStats extraStats;
 	
 	public TracerouteASStats(){}
@@ -89,6 +91,13 @@ public class TracerouteASStats {
 	}
 	public void setFlags(int flags) {
 		this.flags = flags;
+	}
+
+	public String getFlagsHEX() {
+		return flagsHEX;
+	}
+	public void setFlagsHEX(String flagsHEX) {
+		this.flagsHEX = flagsHEX;
 	}
 
 	public ExtraStats getExtraStats() {

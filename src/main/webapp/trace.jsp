@@ -52,7 +52,7 @@
 			
 			<display:table id="tracerouteASStats1" name="tracerouteAS.tracerouteASStats" export="false" class="table table-condensed">
 					<display:column property="completed" title="completed" />
-					<display:column property="flags" title="flags" />
+					<display:column property="flagsHEX" title="flags" />
 					<display:column property="asHops" title="number AS Hops" />
 
 			</display:table>

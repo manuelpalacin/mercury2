@@ -56,6 +56,7 @@ public class TracerouteActionImpl extends ActionSupport implements TracerouteAct
 	public String getTraceroute() {
 		
 		tracerouteAS = tracerouteDao.getTracerouteAS(id);
+		tracerouteAS.getTracerouteASStats().setFlagsHEX( Integer.toHexString( tracerouteAS.getTracerouteASStats().getFlags() ) );
 		tracerouteASHopsJson = gson.toJson(tracerouteAS.getTracerouteASHops());
 		tracerouteASRelationshipsJson = gson.toJson(tracerouteAS.getTracerouteASRelationships());
 				
